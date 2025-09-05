@@ -1,0 +1,28 @@
+#both monitors
+
+[default]
+duration = '5m'
+sorting = 'random'
+
+#[default.transition.glitch-displace]
+#transition-time = 5000
+
+[default.transition.dissolve]
+#transition-time = 5000
+line-width = 0.1
+spread-clr = [1.0, 0.0, 0.0]
+hot-clr = [0.9, 0.9, 0.2]
+intensity = 1.0
+pow = 5.0
+
+# Vertical monitor
+
+["re:BNQ"]
+path = "/home/ntsu/wallpapers/vtubers/vert"
+mode = "center"
+
+# Main monitor
+
+["re:GIGA-BYTE"]
+path = "/home/ntsu/wallpapers/vtubers/horiz"
+mode = "stretch"

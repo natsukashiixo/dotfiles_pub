@@ -1,0 +1,38 @@
+["monitor.HDMI-A-2"]
+name = "HDMI-A-2"
+model = "BenQ XL2411Z"
+orientation = "vertical"
+height = 1920
+width = 1080
+aspect_ratio = 0.5625
+wallpaper_folders = []
+file_format = "png"
+
+["monitor.DP-4"]
+name = "DP-4"
+model = "G32QC"
+orientation = "horizontal"
+height = 1440
+width = 2560
+aspect_ratio = 1.7777777777777777
+wallpaper_folders = []
+file_format = "png"
+
+[general]
+default_format = "png"
+quality = 95
+preserve_originals = true
+output_suffix = "_resized"
+
+[processing]
+subject_detection = true
+detection_confidence = 0.7
+crop_padding = 50
+parallel_workers = 4
+
+[upscaling]
+model_path = "/mnt/raid/imagegen/ComfyUI/models/upscale_models/"
+default_model = "RealESRGAN_x4Plus_Anime_6B.pt"
+tile_size = 256
+tile_padding = 32
+tile_blur = 8

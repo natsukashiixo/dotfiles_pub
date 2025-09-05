@@ -1,0 +1,136 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
+    "margin-bottom": 5,
+    "output": "DP-3",
+    "modules-left": [
+      "pulseaudio",
+      "backlight",
+      "custom/pacman-updates",
+      "custom/pacman-orphans",
+    ],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "network",
+      "temperature",
+      "cpu",
+      "memory",
+      "custom/gpu-usage",
+      "battery",
+      "clock",
+    ],
+    "reload_style_on_change": true,
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "disable-click": false,
+    },
+    "tray": {
+      "spacing": 10,
+    },
+    "clock": {
+      "format": "{:%a %Y %b %d %R}",
+    },
+    "custom/japan": {
+      "format": "{}",
+      "exec": "TZ=America/Vancouver date \"+%H:%M %Z\"",
+      "interval": 30,
+    },
+    "custom/germany": {
+      "format": "{}",
+      "exec": "TZ=Europe/Berlin date \"+%H:%M %Z\"",
+      "interval": 30,
+    },
+    "cpu": {
+      "format": " {usage}%",
+    },
+    "memory": {
+      "format": " {percentage}%",
+    },
+    "custom/gpu-usage": {
+      "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+      "format": "󰟡: {}%",
+      "return-type": "",
+      "interval": 4,
+    },
+    "temperature": {
+      "critical-threshold": 75,
+      "format": " {temperatureC}°C",
+    },
+    "battery": {
+      "bat": "BAT0",
+      "full-at": 95,
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15,
+      },
+      "format": "{icon} {capacity}%",
+      "format-icons": [" ", " ", " ", " ", " "],
+    },
+    "network": {
+      "format-ethernet": "   {ifname}",
+      "format-wifi": "  {essid}",
+      "format-disconnected": "⚠ Disconnected",
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "",
+      "format-icons": {
+        "headphones": "",
+        "default": ["", ""],
+      },
+      "on-click": "pavucontrol",
+    },
+    "hyprland/workspaces": {
+      "format": "{name} {icon}",
+      "format-icons": {
+        "active": "",
+        "default": "",
+      },
+    },
+    "backlight": {
+      "device": "amdgpu_bl0",
+      "format": "{icon} {percent}%",
+      "format-icons": [" ", " ", " "],
+    },
+    "custom/pacman-updates": {
+      "format": "󰣇 Updates: {}",
+      "exec": "checkupdates | wc -l",
+      "interval": 600,
+    },
+    "custom/pacman-orphans": {
+      "format": "󰣇 Orphans: {}",
+      "exec": "pacman -Qdtq | wc -l",
+      "interval": 600,
+    },
+  },
+
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
+    "margin-bottom": 5,
+    "output": "HDMI-A-1",
+    "modules-center": ["hyprland/workspaces"],
+    "reload_style_on_change": true,
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "disable-click": false,
+    },
+    "hyprland/workspaces": {
+      "format": "{name} {icon}",
+      "format-icons": {
+        "active": "",
+        "default": "",
+      },
+    },
+  },
+]
