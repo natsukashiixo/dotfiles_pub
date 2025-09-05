@@ -1,0 +1,11 @@
+/*try regreet override*/
+frame.background {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.2);
+  transition: background-color 200ms ease-in-out;
+}
+
+frame.background:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}

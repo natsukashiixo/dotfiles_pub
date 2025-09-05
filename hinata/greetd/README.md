@@ -1,0 +1,1 @@
+rsync contents of folder to `/etc/greetd`
