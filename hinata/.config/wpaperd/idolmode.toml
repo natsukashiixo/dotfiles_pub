@@ -18,11 +18,11 @@ pow = 5.0
 # Vertical monitor
 
 ["re:BNQ"]
-path = "/home/ntsu/wallpapers/imas/vert"
+path = "/home/ntsu/wallpapers/imas/vert__resized"
 mode = "center"
 
 # Main monitor
 
 ["re:GIGA-BYTE"]
-path = "/home/ntsu/wallpapers/imas/horiz"
+path = "/home/ntsu/wallpapers/imas/horiz__resized"
 mode = "stretch"

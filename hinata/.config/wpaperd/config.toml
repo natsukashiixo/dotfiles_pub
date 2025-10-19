@@ -18,11 +18,11 @@ pow = 5.0
 # Vertical monitor
 
 ["re:BNQ"]
-path = "/home/ntsu/wallpapers/vtubers/vert"
+path = "/home/ntsu/wallpapers/vtubers/vert__resized"
 mode = "center"
 
 # Main monitor
 
 ["re:GIGA-BYTE"]
-path = "/home/ntsu/wallpapers/vtubers/horiz"
+path = "/home/ntsu/wallpapers/vtubers/horiz__resized"
 mode = "stretch"

@@ -1,0 +1,338 @@
+
+# █▀▄▀█ █▀█ █▄░█ █ ▀█▀ █▀█ █▀█
+# █░▀░█ █▄█ █░▀█ █ ░█░ █▄█ █▀▄
+monitor = desc:BNQ BenQ XL2411Z T9F01622SL0, highres@highrr, 0x0, 1, transform, 1
+monitor = desc:GIGA-BYTE TECHNOLOGY CO. LTD. G32QC 20280B006110, 2560x1440@120, 1080x0, 1
+
+# Set up workspaces
+workspace = 1, monitor HDMI-A-2
+workspace = 2, monitor DP-4
+workspace = 3, monitor DP-4
+workspace = 4, monitor DP-4
+
+# █▀▀ ▀▄▀ █▀▀ █▀▀
+# ██▄ █░█ ██▄ █▄▄
+exec-once = wl-clipboard-history -t
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=/usr/lib/polkit-kde-authentication-agent-1
+exec-once = echo se > /tmp/kb_layout
+exec-once = wpaperd -d
+exec-once = fcitx5
+exec-once = dunst
+
+#unsure about this one
+exec-once = mega-cmd-server
+#if its not persistent then probably set DP as primary monitor when hyprland starts
+exec-once = xrandr --output DP-4 --primary
+
+#hyprlock has multimonitor issues, disabling hypridle for the time being
+#exec-once = hypridle
+
+#waybar modules rely on hyprsunset
+exec-once = hyprsunset
+exec-once = waybar
+
+# █▀▀ ▀▄▀ █▀▀ █▀▀
+# ██▄ █░█ ██▄ █▄▄2
+exec-once = [workspace 1 silent; monitor HDMI-A-2] ghostty
+exec-once = [workspace 2 silent; monitor DP-4] firefox
+exec-once = [workspace 2 silent; monitor DP-4] vesktop
+exec-once = [workspace 3 silent; float; move 10% 5%; size 1000 600; monitor DP-4] keepassxc
+exec-once = [workspace 3 silent; float; move 60% 5%; size 400 600; monitor DP-4] easyeffects
+exec-once = [workspace 3 silent; float; move 50% 5%; size 300 800; monitor DP-4] /opt/piavpn/bin/pia-client --clear-cache
+
+# █ █▄░█ █▀█ █░█ ▀█▀
+# █ █░▀█ █▀▀ █▄█ ░█░
+input {
+  kb_layout = se
+  follow_mouse = 1
+  sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+}
+
+# █▀▀ █░█ █▀█ █▀ █▀█ █▀█
+# █▄▄ █▄█ █▀▄ ▄█ █▄█ █▀▄
+cursor {
+  no_hardware_cursors = 1
+  inactive_timeout = 60
+}
+
+# █▀▀ █▀▀ █▄░█ █▀▀ █▀█ ▄▀█ █░░
+# █▄█ ██▄ █░▀█ ██▄ █▀▄ █▀█ █▄▄
+general {
+  gaps_in=4
+  gaps_out=8
+  border_size=1
+  col.active_border=0xffFFFFFF
+  col.inactive_border=0xffacacac
+  no_border_on_floating = false
+  layout = dwindle
+  resize_on_border = true # lets see if this is ok
+}
+
+# █▀▄▀█ █ █▀ █▀▀
+# █░▀░█ █ ▄█ █▄▄
+misc {
+  disable_hyprland_logo = true
+  disable_splash_rendering = true
+  mouse_move_enables_dpms = true
+  vfr = true
+  enable_swallow = true
+  swallow_regex = ^(wezterm)$
+}
+
+# █▀▄ █▀▀ █▀▀ █▀█ █▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▄▀ ██▄ █▄▄ █▄█ █▀▄ █▀█ ░█░ █ █▄█ █░▀█
+
+decoration {
+  # █▀█ █▀█ █░█ █▄░█ █▀▄   █▀▀ █▀█ █▀█ █▄░█ █▀▀ █▀█
+  # █▀▄ █▄█ █▄█ █░▀█ █▄▀   █▄▄ █▄█ █▀▄ █░▀█ ██▄ █▀▄
+  rounding = 0
+  #multisample_edges = true
+
+  # █▀█ █▀█ ▄▀█ █▀▀ █ ▀█▀ █▄█
+  # █▄█ █▀▀ █▀█ █▄▄ █ ░█░ ░█░
+  active_opacity = 1.0
+  inactive_opacity = 0.8
+
+  # █▄▄ █░░ █░█ █▀█
+  # █▄█ █▄▄ █▄█ █▀▄
+  blur {
+    enabled = true
+    size = 3
+    passes = 3
+    new_optimizations = true
+  }
+
+  # █▀ █░█ ▄▀█ █▀▄ █▀█ █░█░█
+  # ▄█ █▀█ █▀█ █▄▀ █▄█ ▀▄▀▄▀
+  shadow {
+  enabled = true
+  range = 10
+  render_power = 2
+  ignore_window = true
+  color = 0x66000000
+  }
+
+  blurls = gtk-layer-shell
+  #blurls = waybar
+  blurls = lockscreen
+}
+
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+animations {
+  enabled = true
+  # █▄▄ █▀▀ ▀█ █ █▀▀ █▀█   █▀▀ █░█ █▀█ █░█ █▀▀
+  # █▄█ ██▄ █▄ █ ██▄ █▀▄   █▄▄ █▄█ █▀▄ ▀▄▀ ██▄
+  bezier = overshot, 0.05, 0.9, 0.1, 1.05
+  bezier = smoothOut, 0.36, 0, 0.66, -0.56
+  bezier = smoothIn, 0.25, 1, 0.5, 1
+
+  animation = windows, 1, 5, overshot, slide
+  animation = windowsOut, 1, 4, smoothOut, slide
+  animation = windowsMove, 1, 4, default
+  animation = border, 1, 10, default
+  animation = fade, 1, 10, smoothIn
+  animation = fadeDim, 1, 10, smoothIn
+  animation = workspaces, 1, 6, default
+
+}
+
+# █░░ ▄▀█ █▄█ █▀█ █░█ ▀█▀ █▀
+# █▄▄ █▀█ ░█░ █▄█ █▄█ ░█░ ▄█
+
+dwindle {
+  pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+  preserve_split = true # you probably want this
+}
+
+# █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   █▀█ █░█ █░░ █▀▀ █▀
+# ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █▀▄ █▄█ █▄▄ ██▄ ▄█
+windowrule = float, class:file_progress
+windowrule = float, class:confirm
+windowrule = float, class:dialog
+windowrule = float, class:download
+windowrule = float, class:^(notification)$
+windowrule = size 64 256, class:^(notification)$
+windowrule = move 90% 15, class:^(notification)$
+windowrule = float, class:error
+windowrule = float, class:splash
+windowrule = float, class:confirmreset
+windowrule = float, title:Open File
+windowrule = float, title:branchdialog
+windowrule = float, class:Lxappearance
+windowrule = float, class:Rofi
+windowrule = animation none,class:Rofi
+windowrule = center class:Rofi
+windowrule = float, class:^(viewnior)$
+windowrule = float, class:feh
+windowrule = float, class:pavucontrol-qt
+windowrule = float, class:pavucontrol
+windowrule = float, class:file-roller
+windowrule = fullscreen, class:wlogout
+windowrule = float, title:wlogout
+windowrule = fullscreen, title:wlogout
+windowrule = idleinhibit focus, class:mpv
+windowrule = idleinhibit fullscreen, class:firefox
+windowrule = float, title:^(Media viewer)$
+windowrule = float, title:^(Volume Control)$
+windowrule = float, title:^(Picture-in-Picture)$
+windowrule = size 800 600, title:^(Volume Control)$
+windowrule = move 15 4%, title:^(Volume Control)$
+windowrule = float, class:steam,title:Friends List
+windowrule = size 400 600, class:steam,title:Friends List
+
+# █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   █▀█ █░█ █░░ █▀▀ █▀   █ █ ▀▀█
+# ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █▀▄ █▄█ █▄▄ ██▄ ▄█   ▀▄▀ ██▄
+windowrule = opacity 1.0 override 1.0 override,title:^(.*)(- YouTube)(.*)$ #active youtube is opaque
+windowrule = opacity 0.8 override 0.5 override,class:^(.*)(ghostty)(.*)$ #override global active opacity in terminal
+#if inactive, disables terminal blur on workspace 1 aka vertical monitor
+windowrule = noblur,class:^(.*)(ghostty)(.*)$, workspace:1, focus:0
+
+# █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄
+# █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀
+
+# ▄▀█ █░█ █▀▄ █ █▀█
+# █▀█ █▄█ █▄▀ █ █▄█
+binde=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+binde=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+binde=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bind=, XF86AudioPlay, exec, playerctl play-pause
+bind=, XF86AudioPause, exec, playerctl play-pause
+bind=, XF86AudioNext, exec, playerctl next
+bind=, XF86AudioPrev, exec, playerctl previous
+
+# █▀ █▀▀ █▀█ █▀▀ █▀▀ █▄░█ █▀ █░█ █▀█ ▀█▀
+# ▄█ █▄▄ █▀▄ ██▄ ██▄ █░▀█ ▄█ █▀█ █▄█ ░█░
+bind = , PRINT, exec, grim - | wl-copy
+bind = SUPERSHIFT, S, exec, ~/.config/scripts/screenshot_custom
+
+# █▀▄▀█ █ █▀ █▀▀
+# █░▀░█ █ ▄█ █▄▄
+bind = SUPERSHIFT, X, exec, hyprpicker -a
+bind = SUPER, L, exec, hyprlock
+bind = SUPER, T, exec, ghostty
+bind = SUPER, E, exec, thunar
+bind = SUPER, W, exec, firefox
+bind = SUPER, M, exec, code
+bindr = SUPER, SUPER_L, exec, killall rofi || rofi -show drun -theme ~/.config/rofi/global/custom.rasi
+bind = SUPER, X, exec, wlogout --protocol layer-shell -b 5 -T 400 -B 400
+bind = SUPER, J, exec, fcitx5-remote -t && pkill -SIGRTMIN+5 waybar
+
+# █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   █▀▄▀█ ▄▀█ █▄░█ ▄▀█ █▀▀ █▀▄▀█ █▀▀ █▄░█ ▀█▀
+# ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █░▀░█ █▀█ █░▀█ █▀█ █▄█ █░▀░█ ██▄ █░▀█ ░█░
+bind = SUPER, Q, killactive,
+bind = SUPER SHIFT, Q, exit,
+bind = SUPER, F, fullscreen,
+bind = SUPER, Space, togglefloating,
+bind = SUPER, P, pseudo, # dwindle
+bind = SUPER, S, togglesplit, # dwindle
+
+# █▀▀ █▀█ █▀▀ █░█ █▀
+# █▀░ █▄█ █▄▄ █▄█ ▄█
+bind = SUPER, left, movefocus, l
+bind = SUPER, right, movefocus, r
+bind = SUPER, up, movefocus, u
+bind = SUPER, down, movefocus, d
+
+#Vim bindings
+#bind = SUPER, H, movefocus, l
+#bind = SUPER, L, movefocus, r
+#bind = SUPER, K, movefocus, u
+
+# if you ever become a vimmer, dont forget that this is your JP shortcut as well
+#bind = SUPER, J, movefocus, d
+
+# █▀▄▀█ █▀█ █░█ █▀▀
+# █░▀░█ █▄█ ▀▄▀ ██▄
+bind = SUPER SHIFT, left, movewindow, l
+bind = SUPER SHIFT, right, movewindow, r
+bind = SUPER SHIFT, up, movewindow, u
+bind = SUPER SHIFT, down, movewindow, d
+
+#Vim bindings
+bind = SUPER SHIFT, H, movewindow, l
+bind = SUPER SHIFT, L, movewindow, r
+bind = SUPER SHIFT, K, movewindow, u
+bind = SUPER SHIFT, J, movewindow, d
+
+# █▀█ █▀▀ █▀ █ ▀█ █▀▀
+# █▀▄ ██▄ ▄█ █ █▄ ██▄
+bind = SUPER CTRL, left, resizeactive, -20 0
+bind = SUPER CTRL, right, resizeactive, 20 0
+bind = SUPER CTRL, up, resizeactive, 0 -20
+bind = SUPER CTRL, down, resizeactive, 0 20
+
+# ▀█▀ ▄▀█ █▄▄ █▄▄ █▀▀ █▀▄
+# ░█░ █▀█ █▄█ █▄█ ██▄ █▄▀
+bind= SUPER, g, togglegroup
+bind= SUPER, tab, changegroupactive
+
+# █▀ █▀█ █▀▀ █▀▀ █ ▄▀█ █░░
+# ▄█ █▀▀ ██▄ █▄▄ █ █▀█ █▄▄
+bind = SUPER, c, togglespecialworkspace
+bind = SUPERSHIFT, c, movetoworkspace, special
+
+# █▀ █░█░█ █ ▀█▀ █▀▀ █░█
+# ▄█ ▀▄▀▄▀ █ ░█░ █▄▄ █▀█
+bind = SUPER, 1, workspace, 1
+bind = SUPER, 2, workspace, 2
+bind = SUPER, 3, workspace, 3
+bind = SUPER, 4, workspace, 4
+bind = SUPER, 5, workspace, 5
+bind = SUPER, 6, workspace, 6
+bind = SUPER, 7, workspace, 7
+bind = SUPER, 8, workspace, 8
+bind = SUPER, 9, workspace, 9
+bind = SUPER, 0, workspace, 10
+bind = SHIFT ALT, right, workspace, e+1
+bind = SHIFT ALT, left, workspace, e-1
+
+# █▀▄▀█ █▀█ █░█ █▀▀
+# █░▀░█ █▄█ ▀▄▀ ██▄
+bind = SUPER SHIFT, 1, movetoworkspace, 1
+bind = SUPER SHIFT, 2, movetoworkspace, 2
+bind = SUPER SHIFT, 3, movetoworkspace, 3
+bind = SUPER SHIFT, 4, movetoworkspace, 4
+bind = SUPER SHIFT, 5, movetoworkspace, 5
+bind = SUPER SHIFT, 6, movetoworkspace, 6
+bind = SUPER SHIFT, 7, movetoworkspace, 7
+bind = SUPER SHIFT, 8, movetoworkspace, 8
+bind = SUPER SHIFT, 9, movetoworkspace, 9
+bind = SUPER SHIFT, 0, movetoworkspace, 10
+
+# █▀▄▀█ █▀█ █░█ █▀ █▀▀   █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀
+# █░▀░█ █▄█ █▄█ ▄█ ██▄   █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█
+bindm = SUPER, mouse:272, movewindow
+bindm = SUPER, mouse:273, resizewindow
+bind = SUPER, mouse_down, workspace, e+1
+bind = SUPER, mouse_up, workspace, e-1
+
+# █▀▀ █▄░█ █░█
+# ██▄ █░▀█ ▀▄▀
+
+# NVIDIA ENV VARS PLS NO DELET
+env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+#env = WLR_NO_HARDWARE_CURSORS,1 # deprecated
+
+# attempt force wayland
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+
+# Workaround for wrong wpaperd texture on vertical screen
+# https://github.com/hyprwm/Hyprland/issues/9408#issuecomment-2661608482
+render {
+     expand_undersized_textures = false
+}
+
+#FCITX ENV VARS
+env = QT_IM_MODULE,fcitx
+env = XMODIFIERS,@im=fcitx
+#maybe dangerous, theoretically forces all wayland windows to use text input v3
+env = WAYLAND_TEXT_INPUT=3
+
+#ssh socket
+env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket

@@ -5,7 +5,7 @@ orientation = "vertical"
 height = 1920
 width = 1080
 aspect_ratio = 0.5625
-wallpaper_folders = ["/home/ntsu/wallpapers/imas/vert", "/home/ntsu/wallpapers/vtubers/vert", "/home/ntsu/wallpapers/normie/vert"]
+wallpaper_folders = []
 file_format = "png"
 
 ["monitor.DP-4"]
@@ -15,7 +15,7 @@ orientation = "horizontal"
 height = 1440
 width = 2560
 aspect_ratio = 1.7777777777777777
-wallpaper_folders = ["/home/ntsu/wallpapers/imas/horiz", "/home/ntsu/wallpapers/vtubers/horiz", "/home/ntsu/wallpapers/normie/horiz"]
+wallpaper_folders = []
 file_format = "png"
 
 [general]
@@ -27,7 +27,7 @@ output_suffix = "_resized"
 [processing]
 subject_detection = true
 downscaling_algorithm = "LANCZOS"
-postprocessing = false
+postprocessing = true
 postprocessing_amount = 0.1
 crop_padding = 50
 parallel_workers = 4
