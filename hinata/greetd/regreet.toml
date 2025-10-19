@@ -1,5 +1,5 @@
 [background]
-path = "/usr/share/wallpapers/syokonowatermark.jpg"
+path = "/usr/share/wallpapers/kanatanbig.png"
 fit = "Fill"
 
 [env]
@@ -23,9 +23,11 @@ theme_name = "Nordic"
 
 [appearance]
 # Override welcome message
+
 greeting_msg = ""
 
 [commands]
+
 # The command used to reboot the system
 reboot = [ "systemctl", "reboot" ]
 

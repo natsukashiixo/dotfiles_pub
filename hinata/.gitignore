@@ -11,6 +11,7 @@
 !/.config/pavucontrol.ini
 !/.config/pipewire
 !/.config/rofi
+!/.config/scripts
 !/.config/spandwal
 !/.config/starship.toml
 !/.config/waybar
