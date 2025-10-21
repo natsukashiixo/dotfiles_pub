@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# screenshot_region - simple, robust Wayland/X screenshot helper
+# Usage: screenshot_region [mode] [--no-copy] [--open]
+#   mode: region (default), fullscreen, window
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# -------- CONFIG --------
+OUTPUT_DIR="${OUTPUT_DIR:-$HOME/Pictures/Screenshots}"
+TEMPDIR="${TEMPDIR:-/tmp/screenshot_thumb}"
+mkdir -p -- "$OUTPUT_DIR" "$TEMPDIR"
+
+MODE="${1:-region}"
+shift 1 || true
+
+FILE_NAME="$(date +'%Y-%m-%d_%H-%M-%S')"
+FULLSIZE="$OUTPUT_DIR/screenshot-$FILE_NAME.png"
+THUMB="$TEMPDIR/screenshot-$FILE_NAME.png"
+
+_log() { printf '%s\n' "$*"; }
+_err() { printf 'ERROR: %s\n' "$*" >&2; }
+
+# -------- Capture implementations --------
+capture_with_hyprshot() {
+  hyprshot -m "$MODE" --raw | \
+    satty --filename - \
+          --output-filename "$FULLSIZE" \
+          --early-exit \
+          --actions-on-enter save-to-clipboard \
+          --save-after-copy \
+          --copy-command 'wl-copy'
+}
+
+# -------- Main flow --------
+_main() {
+    capture_with_hyprshot
+
+  # ensure file exists
+  if [ ! -s "$FULLSIZE" ]; then
+    _err "Capture produced no file (probably cancelled)."
+    exit 3
+  fi
+
+  # Print saved path for scripts / caller
+  printf '%s\n' "$FULLSIZE"
+}
+
+_main "$@"

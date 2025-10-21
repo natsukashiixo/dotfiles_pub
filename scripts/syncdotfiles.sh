@@ -5,13 +5,9 @@ export HOST="${HOST:-$(cat /etc/hostname)}"
 export CODEDIR="/mnt/raid/mycode"
 export DOTSREPO="$CODEDIR/dotfiles_pub/"
 
-log() {
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> /home/ntsu/.config/scripts/syncdotfiles.log
-}
-
-exec >> /home/ntsu/.config/scripts/syncdotfiles.log 2>&1
-
-log "=== Starting dotfiles sync ==="
+#=== Set up logging ===
+source ~/scripts/lib/logging.sh
+start_log
 
 cd "$DOTSREPO"
 
@@ -31,4 +27,4 @@ else
   log "No changes detected."
 fi
 
-log "=== Finished dotfiles sync ==="
+end_log
