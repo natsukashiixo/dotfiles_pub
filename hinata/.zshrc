@@ -140,6 +140,7 @@ alias idolmode="killall wpaperd && wpaperd -c $HOME/.config/wpaperd/idolmode.tom
 alias vtubermode="killall wpaperd && wpaperd -c $HOME/.config/wpaperd/vtubermode.toml -d"
 alias restorewpaperd="killall wpaperd && wpaperd -c $HOME/.config/wpaperd/config.toml -d"
 alias normiemode='killall wpaperd && wpaperd -c $HOME/.config/wpaperd/normiemode.toml -d'
+alias moviemode='killall wpaperd && wpaperd -c $HOME/.config/wpaperd/moviemode.toml -d'
 
 #function aliases
 function fuck() { sudo $(fc -ln -1); }

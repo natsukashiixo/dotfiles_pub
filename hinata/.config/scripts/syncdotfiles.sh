@@ -8,7 +8,7 @@ rsync -a --delete --update --no-links --exclude-from='.gitignore' /etc/greetd/ g
 
 # commit + push if changed
 if ! git diff --quiet || ! git diff --cached --quiet; then
-  git add .
+  git add -A
   git commit -m "Auto-sync: $(date '+%Y-%m-%d %H:%M:%S')"
   git push
 fi

@@ -1,0 +1,16 @@
+#both monitors
+
+[default]
+sorting = 'random'
+
+# Vertical monitor
+
+["re:BNQ"]
+path = ""
+mode = "center"
+
+# Main monitor
+
+["re:GIGA-BYTE"]
+path = ""
+mode = "stretch"
