@@ -31,6 +31,15 @@ safe_run yay -Qqm > "$HOST/aurlist.txt"
 safe_run flatpak list --app --columns=application > "$HOST/flatpaklist.txt"
 safe_run uv tool list | awk '!/- /' > "$HOST/uvlist.txt"
 
+for file in "$HOST"/*.txt; do
+  [[ -s "$file" ]] || continue
+  if head -n 1 "$file" | grep -q '^\['; then
+    tmpfile="$(mktemp)"
+    tail -n +2 "$file" > "$tmpfile" && mv "$tmpfile" "$file"
+    log "Cleaned header from $(basename "$file")"
+  fi
+done
+
 # === Commit + push if changes ===
 if ! git diff --quiet || ! git diff --cached --quiet; then
   git add -A

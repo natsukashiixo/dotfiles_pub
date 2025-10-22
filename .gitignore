@@ -1,6 +1,7 @@
 **/.config/*
 !**/.config/cava
 !**.config/easyeffects
+!**/.config/fastfetch
 !**/.config/fcitx5
 !**/.config/fontconfig
 !**/.config/ghostty
