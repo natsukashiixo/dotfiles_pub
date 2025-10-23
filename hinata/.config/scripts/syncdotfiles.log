@@ -15,3 +15,50 @@ skipping non-regular file "nanorc/zshrc.nanorc"
 skipping non-regular file "net.imput.helium/SingletonCookie"
 skipping non-regular file "net.imput.helium/SingletonLock"
 skipping non-regular file "net.imput.helium/SingletonSocket"
+skipping non-regular file "systemd/user/default.target.wants/pipewire-pulse.service"
+skipping non-regular file "systemd/user/default.target.wants/pipewire-pulse.socket"
+skipping non-regular file "systemd/user/sockets.target.wants/ssh-agent.socket"
+skipping non-regular file "vesktop/SingletonCookie"
+skipping non-regular file "vesktop/SingletonLock"
+skipping non-regular file "vesktop/SingletonSocket"
+warning: adding embedded git repository: hinata/.config/fastfetch
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint: 	git submodule add <url> hinata/.config/fastfetch
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint: 	git rm --cached hinata/.config/fastfetch
+hint:
+hint: See "git help submodule" for more information.
+hint: Disable this message with "git config set advice.addEmbeddedRepo false"
+[main c505457] Auto-sync: 2025-10-22 04:00:02
+ 4 files changed, 28 insertions(+)
+ create mode 160000 hinata/.config/fastfetch
+ create mode 100644 hinata/.config/scripts/syncdotfiles.log
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[2025-10-23 04:00:00] === Starting dotfiles sync ===
+skipping non-regular file "assets"
+skipping non-regular file "Heynote/SingletonCookie"
+skipping non-regular file "Heynote/SingletonLock"
+skipping non-regular file "Heynote/SingletonSocket"
+skipping non-regular file "Slack/SingletonCookie"
+skipping non-regular file "Slack/SingletonLock"
+skipping non-regular file "Slack/SingletonSocket"
+skipping non-regular file "gtk-4.0/gtk-dark.css"
+skipping non-regular file "gtk-4.0/gtk.css"
+skipping non-regular file "nanorc/gitcommit.nanorc"
+skipping non-regular file "nanorc/html.j2.nanorc"
+skipping non-regular file "nanorc/twig.nanorc"
+skipping non-regular file "nanorc/zshrc.nanorc"
+skipping non-regular file "net.imput.helium/SingletonCookie"
+skipping non-regular file "net.imput.helium/SingletonLock"
+skipping non-regular file "net.imput.helium/SingletonSocket"
