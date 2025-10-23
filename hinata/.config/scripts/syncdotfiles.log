@@ -62,3 +62,31 @@ skipping non-regular file "nanorc/zshrc.nanorc"
 skipping non-regular file "net.imput.helium/SingletonCookie"
 skipping non-regular file "net.imput.helium/SingletonLock"
 skipping non-regular file "net.imput.helium/SingletonSocket"
+skipping non-regular file "systemd/user/default.target.wants/pipewire-pulse.service"
+skipping non-regular file "systemd/user/default.target.wants/pipewire-pulse.socket"
+skipping non-regular file "systemd/user/sockets.target.wants/ssh-agent.socket"
+skipping non-regular file "vesktop/SingletonCookie"
+skipping non-regular file "vesktop/SingletonLock"
+skipping non-regular file "vesktop/SingletonSocket"
+[main df87f99] Auto-sync: 2025-10-23 04:00:02
+ 18 files changed, 219 insertions(+), 601 deletions(-)
+ create mode 100644 hinata/.config/hypr/scheme/current.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/animations.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/autostart.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/binds.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/cursor.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/decorations.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/dwindle.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/general.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/input.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/loadorder
+ delete mode 100644 hinata/.config/hypr/splitfiles/misc.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/monitors.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/vars.conf
+ delete mode 100644 hinata/.config/hypr/splitfiles/windowrules.conf
+ create mode 100755 scripts/smartcopypaste.sh
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
