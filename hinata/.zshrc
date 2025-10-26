@@ -124,7 +124,7 @@ alias py="$(command -v python3 || command -v python)"
 # code paths
 export RAIDROOT="/mnt/raid"
 alias cdgit='cd "$RAIDROOT/mycode"'
-alias gitclone='cd "$RAIDROOT/gitclones"'
+for a in gitclones gitclone; do alias $a='cd "$RAIDROOT/gitclones"'; done
 alias workcode='cd "$RAIDROOT/workcode"'
 
 #pacman helpers
