@@ -1,0 +1,3 @@
+#!/bin/bash
+kexec -l /boot/vmlinuz-bazzite --initrd=initramfs-linux-bazzite.img --reuse-cmdline
+systemctl kexec

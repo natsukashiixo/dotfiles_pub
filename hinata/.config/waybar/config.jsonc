@@ -182,7 +182,7 @@
     },
     "group/centermods": {
       "orientation": "horizontal",
-      "modules": ["cava", "hyprland/workspaces", "custom/fcitx-lang"],
+      "modules": ["hyprland/workspaces", "custom/fcitx-lang"],
     },
     "custom/fcitx-lang": {
       "format": "{}",
@@ -226,48 +226,5 @@
       "return-type": "json"
       },
     // end of main monitor bar
-  },
-
-  // vertical monitor bar
-
-  {
-    "layer": "top",
-    "position": "top",
-    "height": 30,
-    "margin-left": 0,
-    "margin-right": 0,
-    "margin-top": 5,
-    "margin-bottom": 0,
-    "output": "HDMI-A-1",
-    "modules-center": ["hyprland/workspaces"],
-    "reload_style_on_change": true,
-    "hyprland/workspaces": {
-      "disable-scroll": true,
-      "disable-click": false,
-      "format": "{icon}",
-      "format-icons": {
-        "1": "I",
-        "2": "II",
-        "3": "III",
-        "4": "IV",
-        "5": "V",
-        "6": "VI",
-        "7": "VII",
-        "8": "VIII",
-        "9": "IX",
-        "10": "X",
-        "11": "XI",
-        "12": "XII",
-        "13": "XIII",
-        "14": "XIV",
-        "15": "XV",
-        "16": "XVI",
-        "17": "XVII",
-        "18": "XVIII",
-        "19": "XIX",
-        "20": "XX",
-        "default": "{id}",
-      },
-    },
   },
 ]
