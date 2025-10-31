@@ -4,6 +4,8 @@
 
 set -euo pipefail
 
+export HOST="${HOST:-$(cat /etc/hostname)}"
+
 # --- Configuration ---
 LOGDIR="/var/log/${USER}"
 mkdir -p "$LOGDIR"
@@ -19,7 +21,7 @@ log() {
 }
 
 start_log() {
-  log "=== Starting $(basename "$0") on $(hostname) ==="
+  log "=== Starting $(basename "$0") on $(HOST) ==="
 }
 
 end_log() {
