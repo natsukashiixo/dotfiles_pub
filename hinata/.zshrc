@@ -120,6 +120,8 @@ alias ifconfig="echo 'did you mean ip -br a?' ; ip -br a"
 alias ipaddr="ip -color -br a"
 alias ff="fastfetch"
 alias py="$(command -v python3 || command -v python)"
+alias unfuckscreens="ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100"
+
 
 # code paths
 export RAIDROOT="/mnt/raid"
