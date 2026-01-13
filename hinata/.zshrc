@@ -122,7 +122,6 @@ alias ff="fastfetch"
 alias py="$(command -v python3 || command -v python)"
 alias unfuckscreens="ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100"
 
-
 # code paths
 export RAIDROOT="/mnt/raid"
 alias cdgit='cd "$RAIDROOT/mycode"'
@@ -186,7 +185,6 @@ function va() {
     echo "No .venv found in $(pwd)"
   fi
 }
-
 
 # path env vars
 export ZSHCONF="$HOME/.zshrc"
