@@ -186,6 +186,12 @@ function va() {
   fi
 }
 
+# make shit shut up
+shutup() { 
+  "$@" >/dev/null 2>&1; 
+}
+
+
 # path env vars
 export ZSHCONF="$HOME/.zshrc"
 export NNMODELS="/mnt/raid/imagegen/ComfyUI/models/"

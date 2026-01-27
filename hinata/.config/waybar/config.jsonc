@@ -15,7 +15,8 @@
       "backlight",
       "custom/pacman-updates",
       "custom/pacman-orphans",
-      "custom/kernel-update"
+      "custom/kernel-update",
+      "custom/restore-screen"
     ],
     "modules-center": ["group/centermods"],
     "modules-right": [
@@ -224,6 +225,10 @@
       "exec": "~/.config/waybar/scripts/kernel-update.sh",
       "interval": 60,
       "return-type": "json"
+      },
+    "custom/restore-screen": {
+      "format": "󱄄 ",
+      "on-click": "ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100 > /dev/null 2>&1"
       },
     // end of main monitor bar
   },
