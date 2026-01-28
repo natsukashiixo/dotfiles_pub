@@ -207,3 +207,5 @@ export PATH="$PATH:/home/ntsu/.local/bin"
 [[ -f /home/ntsu/.dart-cli-completion/zsh-config.zsh ]] && . /home/ntsu/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
+# test importing llm stuff
+source ~/.llms
