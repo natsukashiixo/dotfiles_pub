@@ -5,9 +5,9 @@
     // "fixed-center": false,
     "position": "top",
     "height": 30,
-    "margin-left": 5,
-    "margin-right": 5,
-    "margin-top": 5,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
     "margin-bottom": 0,
     "output": "DP-1",
     "modules-left": [
@@ -18,12 +18,8 @@
       "custom/kernel-update",
       "custom/restore-screen"
     ],
-    "modules-center": ["group/centermods"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": [
-      "custom/colortemp",
-      "custom/gamma",
-      "network",
-      "bluetooth",
       "group/hardware",
       "clock",
     ],
@@ -181,38 +177,10 @@
       "orientation": "horizontal",
       "modules": ["temperature", "cpu", "memory", "custom/gpu-usage"],
     },
-    "group/centermods": {
-      "orientation": "horizontal",
-      "modules": ["hyprland/workspaces", "custom/fcitx-lang"],
-    },
     "custom/fcitx-lang": {
       "format": "{}",
       "exec": "~/.config/waybar/scripts/getlang.py",
       "signal": 5,
-    },
-    "cava": {
-// doesnt load it seems, maybe it can only parse .conf? "cava_config": "~/.config/cava/config",
-        "framerate": 60,
-        "autosens": 1,
-        // "sensitivity": 100,
-        "bars": 6,
-        "lower_cutoff_freq": 100,
-        "higher_cutoff_freq": 8500,
-        "method": "pulse",
-        "source": "auto",
-        "stereo": false,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
-        "format-icons": ["▁", "▂", "▃", "▅", "▆", "▇", "█" ],
-        //"format-icons":   ["⣀", "⣠", "⣤", "⣴", "⣶", "⣾", "⣿", "⠿" ],
-        //"format-icons": [" ", "🮆", "🮅", "🮄", "🮃", "🮂", "🭶", " " ],
-        "actions": {
-                   "on-click-right": "mode"
-                   }
     },
     "bluetooth": {
       "format": "",
@@ -232,4 +200,30 @@
       },
     // end of main monitor bar
   },
+{
+  "layer": "top",
+  "name": "bottombar",
+  "position": "bottom",
+  "output": "DP-1",
+
+  "height": 28,
+
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+
+  "modules-left": [],
+  "modules-center": [],
+  "modules-right": [
+    "custom/colortemp",
+    "custom/gamma",
+    "network",
+    "bluetooth",
+    "custom/fcitx-lang"
+  ],
+
+  "reload_style_on_change": true
+}
+
 ]
