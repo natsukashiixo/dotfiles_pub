@@ -1,0 +1,9 @@
+{
+"custom/gpu-usage": {
+      "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+      "format": "󰍛 {}%",
+      "return-type": "",
+      "interval": 4,
+      "on-click": "hyprctl dispatch exec \"[workspace m+0; float; center; size 1280 1024] gtk-launch btop\""
+    }
+}

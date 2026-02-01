@@ -4,12 +4,13 @@
     "name": "mainbar",
     // "fixed-center": false,
     "position": "top",
-    "height": 30,
+    "height": 20,
     "margin-left": 0,
     "margin-right": 0,
     "margin-top": 0,
     "margin-bottom": 0,
     "output": "DP-1",
+    "ipc": false,
     "modules-left": [
       "pulseaudio",
       "backlight",
@@ -147,6 +148,61 @@
       "tooltip": true,
       "tooltip-format": "placeholder",
     },
+    "group/hardware": {
+      "orientation": "horizontal",
+      "modules": ["temperature", "cpu", "memory", "custom/gpu-usage"],
+    },
+    "bluetooth": {
+      "format": "",
+      "format-disabled": "󰂲",
+      "format-connected": "󰂱 {num_connections}",
+      "on-click": "bzmenu -l custom --launcher-command 'rofi -dmenu -theme ~/.config/rofi/global/bt.rasi' > /dev/null 2>&1",
+    },
+    "custom/kernel-update": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/kernel-update.sh",
+      "interval": 60,
+      "return-type": "json"
+      },
+    "custom/restore-screen": {
+      "format": "󱄄 ",
+      "on-click": "ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100 > /dev/null 2>&1"
+      },
+    // end of main monitor bar
+  },
+{
+  "layer": "top",
+  "name": "bottombar",
+  "position": "bottom",
+  "output": "DP-1",
+  "height": 20,
+
+  "start_hidden": true,
+  "ipc": true,
+  "on-sigusr1": "hide",
+  "on-sigusr2": "show",
+
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+
+  "modules-left": [],
+  "modules-center": [],
+  "modules-right": [
+    "custom/colortemp",
+    "custom/gamma",
+    "network",
+    "bluetooth",
+    "custom/fcitx-lang"
+  ],
+  "reload_style_on_change": true,
+"custom/fcitx-lang": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/getlang.py",
+      "on-click": "fcitx5-remote -t && pkill -SIGRTMIN+5 waybar",
+      "signal": 5,
+    },
     "custom/colortemp": {
       "format": "󰖧 {}K",
       "on-click": "~/.config/waybar/scripts/hyprshade.py temperature 4000 toggle",
@@ -173,57 +229,5 @@
       "tooltip": false,
       "signal": 3,
     },
-    "group/hardware": {
-      "orientation": "horizontal",
-      "modules": ["temperature", "cpu", "memory", "custom/gpu-usage"],
-    },
-    "custom/fcitx-lang": {
-      "format": "{}",
-      "exec": "~/.config/waybar/scripts/getlang.py",
-      "signal": 5,
-    },
-    "bluetooth": {
-      "format": "",
-      "format-disabled": "󰂲",
-      "format-connected": "󰂱 {num_connections}",
-      "on-click": "bzmenu -l custom --launcher-command 'rofi -dmenu -theme ~/.config/rofi/global/bt.rasi' > /dev/null 2>&1",
-    },
-    "custom/kernel-update": {
-      "format": "{}",
-      "exec": "~/.config/waybar/scripts/kernel-update.sh",
-      "interval": 60,
-      "return-type": "json"
-      },
-    "custom/restore-screen": {
-      "format": "󱄄 ",
-      "on-click": "ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100 > /dev/null 2>&1"
-      },
-    // end of main monitor bar
-  },
-{
-  "layer": "top",
-  "name": "bottombar",
-  "position": "bottom",
-  "output": "DP-1",
-
-  "height": 28,
-
-  "margin-left": 0,
-  "margin-right": 0,
-  "margin-top": 0,
-  "margin-bottom": 0,
-
-  "modules-left": [],
-  "modules-center": [],
-  "modules-right": [
-    "custom/colortemp",
-    "custom/gamma",
-    "network",
-    "bluetooth",
-    "custom/fcitx-lang"
-  ],
-
-  "reload_style_on_change": true
-}
-
+    }
 ]

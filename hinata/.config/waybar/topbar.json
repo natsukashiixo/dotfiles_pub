@@ -1,0 +1,148 @@
+[
+{
+    "layer": "top",
+    "name": "mainbar",
+    "position": "top",
+    "height": 20,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "output": "DP-1",
+    "ipc": false,
+    "include": [
+    "/home/ntsu/.config/waybar/modules/hardware.json",
+    "/home/ntsu/.config/waybar/modules/lang.json",
+    "/home/ntsu/.config/waybar/modules/pacman.json",
+    "/home/ntsu/.config/waybar/modules/screen.json"
+    ],
+    "modules-left": [
+      "pulseaudio",
+      "backlight",
+      "custom/pacman-updates",
+      "custom/pacman-orphans",
+      "custom/kernel-update",
+      "custom/restore-screen"
+    ],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "group/hardware",
+      "clock"
+    ],
+    "reload_style_on_change": true,
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "disable-click": false,
+      "format": "{icon}",
+      "format-icons": {
+        "1": "I",
+        "2": "II",
+        "3": "III",
+        "4": "IV",
+        "5": "V",
+        "6": "VI",
+        "7": "VII",
+        "8": "VIII",
+        "9": "IX",
+        "10": "X",
+        "11": "XI",
+        "12": "XII",
+        "13": "XIII",
+        "14": "XIV",
+        "15": "XV",
+        "16": "XVI",
+        "17": "XVII",
+        "18": "XVIII",
+        "19": "XIX",
+        "20": "XX",
+        "default": "{id}"
+      }
+    },
+    "tray": {
+      "spacing": 10
+    },
+    "clock": {
+      "format": "{:%a %Y %b %d %R}",
+      "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+    "cpu": {
+      "format": " {usage}%",
+      "on-click": "hyprctl dispatch exec \"[workspace m+0; float; center; size 1280 1024] gtk-launch btop\""
+    },
+    "memory": {
+      "format": " {percentage}%",
+      "on-click": "hyprctl dispatch exec \"[workspace m+0; float; center; size 1280 1024] gtk-launch btop\""
+    },
+    "temperature": {
+      "critical-threshold": 75,
+      "hwmon-path": "/sys/class/wmi_bus/wmi_bus-PNP0C14:00/DEADBEEF-2001-0000-00A0-C90629100000/hwmon/hwmon4/temp2_input",
+      "format": " {temperatureC}°C",
+      "on-click": "hyprctl dispatch exec \"[workspace m+0; float; center; size 1280 1024] gtk-launch btop\""
+    },
+    "battery": {
+      "bat": "BAT0",
+      "full-at": 95,
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon} {capacity}%",
+      "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "network": {
+      "format-ethernet": " ",
+      "format-wifi": "  {essid}",
+      "format-disconnected": "⚠ Disconnected",
+      "on-click": "iwmenu rofi -dmenu -theme ~/.config/rofi/global/wifi.rasi > /dev/null 2>&1"
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "alsa_output.usb-SteelSeries_Arctis_Nova_7-00.analog-stereo": " ",
+        "default": [" ", " "]
+      },
+      "on-click": "~/.config/waybar/scripts/pavutoggle.py",
+      "on-click-right": "~/.config/waybar/scripts/toggle_audio.sh",
+      "on-click-middle": "easyeffects"
+    },
+    "backlight": {
+      "device": "amdgpu_bl0",
+      "format": "{icon} {percent}%",
+      "format-icons": [" ", " ", " "]
+    },
+    "group/hardware": {
+      "orientation": "horizontal",
+      "modules": ["temperature", "cpu", "memory", "custom/gpu-usage"]
+    },
+    "bluetooth": {
+      "format": "",
+      "format-disabled": "󰂲",
+      "format-connected": "󰂱 {num_connections}",
+      "on-click": "bzmenu -l custom --launcher-command 'rofi -dmenu -theme ~/.config/rofi/global/bt.rasi' > /dev/null 2>&1"
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+"custom/pacman-updates": {
+      "format": "󰣇 Updates: {}",
+      "exec": "checkupdates | wc -l",
+      "interval": 5
+    },
+    "custom/pacman-orphans": {
+      "format": "󰣇 Orphans: {}",
+      "exec": "pacman -Qdtq | wc -l",
+      "interval": 5,
+      "tooltip": true,
+      "tooltip-format": "placeholder"
+    },
+    "custom/kernel-update": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/kernel-update.sh",
+      "interval": 60,
+      "return-type": "json"
+      }
+}

@@ -1,0 +1,25 @@
+{
+  "custom/launcher-browser": {
+    "format": "󰖟",
+    "on-click": "/home/ntsu/.config/waybar/scripts/launcher.sh browser",
+    "tooltip": "Browser"
+  },
+
+  "custom/launcher-filemanager": {
+    "format": "󰉋",
+    "on-click": "/home/ntsu/.config/waybar/scripts/launcher.sh filemanager",
+    "tooltip": "File Manager"
+  },
+
+  "custom/launcher-editor": {
+    "format": "󰈙",
+    "on-click": "/home/ntsu/.config/waybar/scripts/launcher.sh editor",
+    "tooltip": "Editor"
+  },
+
+  "custom/launcher-terminal": {
+    "format": "󰆍",
+    "on-click": "/home/ntsu/.config/waybar/scripts/launcher.sh terminal",
+    "tooltip": "Terminal"
+  }
+}

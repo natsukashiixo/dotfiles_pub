@@ -1,0 +1,40 @@
+[
+{
+  "layer": "top",
+  "name": "bottombar",
+  "position": "bottom",
+  "output": "DP-1",
+  "height": 20,
+
+  "start_hidden": true,
+  "ipc": true,
+  "on-sigusr1": "hide",
+  "on-sigusr2": "show",
+
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "include": [
+  "/home/ntsu/.config/waybar/modules/hardware.json",
+  "/home/ntsu/.config/waybar/modules/lang.json",
+  "/home/ntsu/.config/waybar/modules/pacman.json",
+  "/home/ntsu/.config/waybar/modules/screen.json"
+  ],
+  "modules-left": [
+    "custom/launcher-browser",
+    "custom/launcher-filemanager",
+    "custom/launcher-terminal",
+    "custom/launcher-editor"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/colortemp",
+    "custom/gamma",
+    "network",
+    "bluetooth",
+    "custom/fcitx-lang"
+  ],
+  "reload_style_on_change": true
+    }
+]

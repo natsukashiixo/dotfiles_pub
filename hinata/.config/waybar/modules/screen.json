@@ -1,0 +1,34 @@
+{
+  "custom/colortemp": {
+    "format": "󰖧 {}K",
+    "on-click": "~/.config/waybar/scripts/hyprshade.py temperature 4000 toggle",
+    "on-click-right": "~/.config/waybar/scripts/hyprshade.py temperature 6300",
+    "on-scroll-up": "~/.config/waybar/scripts/hyprshade.py temperature +100",
+    "on-scroll-down": "~/.config/waybar/scripts/hyprshade.py temperature -100",
+    "exec": "~/.config/waybar/scripts/hyprshade.py temperature",
+    "exec-on-event": false,
+    "exec-if": "pidof hyprsunset",
+    "interval": "once",
+    "tooltip": false,
+    "signal": 4
+  },
+
+  "custom/gamma": {
+    "format": " {}%",
+    "on-click": "~/.config/waybar/scripts/hyprshade.py gamma 70 toggle",
+    "on-click-right": "~/.config/waybar/scripts/hyprshade.py gamma 100",
+    "on-scroll-up": "~/.config/waybar/scripts/hyprshade.py gamma +10",
+    "on-scroll-down": "~/.config/waybar/scripts/hyprshade.py gamma -10",
+    "exec": "~/.config/waybar/scripts/hyprshade.py gamma",
+    "exec-on-event": false,
+    "exec-if": "pidof hyprsunset",
+    "interval": "once",
+    "tooltip": false,
+    "signal": 3
+  },
+
+  "custom/restore-screen": {
+    "format": "󱄄 ",
+    "on-click": "ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100 > /dev/null 2>&1"
+  }
+}
