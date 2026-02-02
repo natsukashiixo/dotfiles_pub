@@ -17,23 +17,24 @@
   "margin-bottom": 0,
   "include": [
   "/home/ntsu/.config/waybar/modules/hardware.json",
-  "/home/ntsu/.config/waybar/modules/lang.json",
   "/home/ntsu/.config/waybar/modules/pacman.json",
-  "/home/ntsu/.config/waybar/modules/screen.json"
+  "/home/ntsu/.config/waybar/modules/screen.json",
+  "/home/ntsu/.config/waybar/modules/launcher.json",
+  "/home/ntsu/.config/waybar/modules/wallpaper_rotate.json"
   ],
   "modules-left": [
     "custom/launcher-browser",
     "custom/launcher-filemanager",
     "custom/launcher-terminal",
-    "custom/launcher-editor"
+    "custom/launcher-editor",
+    "custom/launcher-passwords"
   ],
-  "modules-center": [],
+  "modules-center": ["custom/wallpaper_rotate"],
   "modules-right": [
     "custom/colortemp",
     "custom/gamma",
     "network",
     "bluetooth",
-    "custom/fcitx-lang"
   ],
   "reload_style_on_change": true
     }

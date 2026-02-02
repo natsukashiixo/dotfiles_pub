@@ -21,5 +21,11 @@
     "format": "󰆍",
     "on-click": "/home/ntsu/.config/waybar/scripts/launcher.sh terminal",
     "tooltip": "Terminal"
+  },
+
+  "custom/launcher-passwords": {
+    "format": "",
+    "on-click": "gtk-launch org.keepassxc.KeePassXC.desktop",
+    "tooltip": "Passwords"
   }
 }

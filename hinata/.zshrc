@@ -121,6 +121,9 @@ alias ipaddr="ip -color -br a"
 alias ff="fastfetch"
 alias py="$(command -v python3 || command -v python)"
 alias unfuckscreens="ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100"
+alias wbrestart='killall waybar; \
+hyprctl dispatch exec "waybar -c /home/ntsu/.config/waybar/bottombar.json -s /home/ntsu/.config/waybar/styling/bottombar.css"; \
+hyprctl dispatch exec "waybar -c /home/ntsu/.config/waybar/topbar.json -s /home/ntsu/.config/waybar/styling/topbar.css"'
 
 # code paths
 export RAIDROOT="/mnt/raid"
@@ -136,12 +139,11 @@ alias listpac='comm -23 <(pacman -Qqe | sort) <(pacman -Qqm | sort)'
 alias listupdates='command -v checkupdates >/dev/null && checkupdates || echo "install pacman-contrib for checkupdates first pls"'
 alias aurupdates='yay -Qua'
 
-#lulz aliases
-alias idolmode="killall wpaperd && wpaperd -c $HOME/.config/wpaperd/idolmode.toml -d"
-alias vtubermode="killall wpaperd && wpaperd -c $HOME/.config/wpaperd/vtubermode.toml -d"
-alias restorewpaperd="killall wpaperd && wpaperd -c $HOME/.config/wpaperd/config.toml -d"
-alias normiemode='killall wpaperd && wpaperd -c $HOME/.config/wpaperd/normiemode.toml -d'
-alias moviemode='killall wpaperd && wpaperd -c $HOME/.config/wpaperd/moviemode.toml -d'
+# wallpaper modes
+alias idolmode='~/scripts/wallpapermode.py idol'
+alias vtubermode='~/scripts/wallpapermode.py vtuber'
+alias normiemode='~/scripts/wallpapermode.py normie'
+alias moviemode='~/scripts/wallpapermode.py movie'
 
 #function aliases
 function fuck() { sudo $(fc -ln -1); }
@@ -166,12 +168,12 @@ compdef _conf_complete conf
 
 # open Hyprland config files quickly
 hyprconf() {
-  local target="$HOME/.config/hypr/${1:-hyprland.conf}"
+  local target="$HOME/.config/hypr/hyprland_imports/${1:-hyprland.conf}"
   [ -e "$target" ] && $EDITOR "$target" || echo "No such config: $target"
 }
 # smart tab completion for hyprconf
 _hyprconf_complete() {
-  _files -W "$HOME/.config/hypr"
+  _files -W "$HOME/.config/hypr/hyprland_imports"
 }
 compdef _hyprconf_complete hyprconf
 

@@ -70,12 +70,9 @@ def build_wallpaper_queue(source_folder: Path) -> list[str]:
 
 
 def set_wallpaper_hyprpaper(image_path: str, screen_name: str) -> None:
+    wp_args = f"{screen_name},{image_path}"
     subprocess.run(
-        ["hyprctl", "hyprpaper", "preload", image_path],
-        check=False,
-    )
-    subprocess.run(
-        ["hyprctl", "hyprpaper", "wallpaper", f"{screen_name} {image_path}"],
+        ["hyprctl", "hyprpaper", "wallpaper", f"{wp_args}"],
         check=False,
     )
 

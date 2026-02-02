@@ -1,0 +1,8 @@
+{
+  "custom/wallpaper_rotate": {
+    "format": "󰸉",
+    "on-click": "/home/ntsu/scripts/wallpaper_random.py horiz && /home/ntsu/scripts/wallpaper_random.py vert",
+    "exec": "/home/ntsu/scripts/wallpaper_random.py horiz && /home/ntsu/scripts/wallpaper_random.py horiz",
+    "interval": 1800
+    }
+}
