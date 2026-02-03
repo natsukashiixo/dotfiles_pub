@@ -1,8 +1,10 @@
 {
   "custom/wallpaper_rotate": {
-    "format": "󰸉",
-    "on-click": "/home/ntsu/scripts/wallpaper_random.py horiz && /home/ntsu/scripts/wallpaper_random.py vert",
-    "exec": "/home/ntsu/scripts/wallpaper_random.py horiz && /home/ntsu/scripts/wallpaper_random.py horiz",
-    "interval": 1800
-    }
+    "exec": "/home/ntsu/.config/waybar/scripts/wallpaper_rotate.sh && echo 󰸉",
+    "format": "{}",
+    "interval": 1800,
+    "tooltip": true,
+    "tooltip-format": "Randomize wallpaper",
+    "on-click": "/home/ntsu/.config/waybar/scripts/wallpaper_rotate.sh && pkill -RTMIN+8 waybar"
+  }
 }

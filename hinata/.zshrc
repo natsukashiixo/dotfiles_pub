@@ -121,9 +121,7 @@ alias ipaddr="ip -color -br a"
 alias ff="fastfetch"
 alias py="$(command -v python3 || command -v python)"
 alias unfuckscreens="ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100"
-alias wbrestart='killall waybar; \
-hyprctl dispatch exec "waybar -c /home/ntsu/.config/waybar/bottombar.json -s /home/ntsu/.config/waybar/styling/bottombar.css"; \
-hyprctl dispatch exec "waybar -c /home/ntsu/.config/waybar/topbar.json -s /home/ntsu/.config/waybar/styling/topbar.css"'
+alias wbrestart='~/scripts/wbfullrestart.sh'
 
 # code paths
 export RAIDROOT="/mnt/raid"
@@ -139,11 +137,12 @@ alias listpac='comm -23 <(pacman -Qqe | sort) <(pacman -Qqm | sort)'
 alias listupdates='command -v checkupdates >/dev/null && checkupdates || echo "install pacman-contrib for checkupdates first pls"'
 alias aurupdates='yay -Qua'
 
-# wallpaper modes
+# wallpaper stuff
 alias idolmode='~/scripts/wallpapermode.py idol'
 alias vtubermode='~/scripts/wallpapermode.py vtuber'
 alias normiemode='~/scripts/wallpapermode.py normie'
 alias moviemode='~/scripts/wallpapermode.py movie'
+alias wprotate='/home/ntsu/scripts/wallpaper_random.py horiz && /home/ntsu/scripts/wallpaper_random.py vert'
 
 #function aliases
 function fuck() { sudo $(fc -ln -1); }
