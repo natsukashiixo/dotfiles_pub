@@ -78,14 +78,14 @@ def lock_and_queue(sig):
 
         # Tell waybar to update after a change
         try:
-            # Find waybar process and send signal
-            # This is a bit more complex than pkill. We'll need to find the PID.
-            # A simpler approach might be to assume waybar listens on a socket
-            # or uses a file, but replicating pkill SIGRTMIN+LEN is tricky
-            # without external tools or deeper process inspection.
-            # Let's use a best effort approach by calling pkill directly via subprocess.
-            # This might require pkill to be available in the environment.
-            subprocess.run(["pkill", "-SIGRTMIN+{}".format(sig), "waybar"], check=False)
+            # Send signal to update waybar via targeted PID wrapper thingy and then we pray.
+            subprocess.run(
+            ["/home/ntsu/.config/waybar/scripts/sendsignal.sh",
+            "bottom",
+            "SIGRTMIN",
+            str(sig)],
+            check=False
+            )
         except FileNotFoundError:
             print("Warning: 'pkill' command not found. Cannot signal waybar.", file=sys.stderr)
         except Exception as e:

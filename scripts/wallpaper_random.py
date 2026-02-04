@@ -21,7 +21,7 @@ DEFAULT_SOURCES = {
 }
 
 CACHE_VERSION = 1
-
+DELAY = 1800
 
 # ----------------------------
 # Helpers
@@ -81,6 +81,31 @@ def get_monitor(screen_arg: str) -> str:
         return "HDMI-A-1"
     return "DP-1"
 
+def set_wallpaper_timer():
+    """
+    Writes the current Unix timestamp plus DELAY to
+    $XDG_RUNTIME_DIR/wbhandler/wallpapertimer using the same
+    command that the shell snippet performs.
+    """
+    # Build the command exactly like the shell version
+    cmd = [
+        "bash",
+        "-c",
+        f'echo $(( $(date +%s) + {DELAY} )) > "$XDG_RUNTIME_DIR/wbhandler/wallpapertimer"'
+    ]
+
+    # Run the command; capture any error output for debugging
+    result = subprocess.run(
+        cmd,
+        capture_output=True,
+        text=True,
+        env=os.environ  # inherit the current environment (including XDG_RUNTIME_DIR)
+    )
+
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"Failed to set wallpaper timer: {result.stderr.strip()}"
+        )
 
 # ----------------------------
 # Main
@@ -166,7 +191,7 @@ def main() -> None:
     # ------------------------------------
     # Output or apply
     # ------------------------------------
-
+    set_wallpaper_timer()
     if args.do_print:
         print(next_wallpaper)
     else:

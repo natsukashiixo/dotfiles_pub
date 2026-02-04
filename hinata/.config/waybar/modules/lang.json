@@ -2,7 +2,7 @@
 "custom/fcitx-lang": {
       "format": "{}",
       "exec": "~/.config/waybar/scripts/getlang.py",
-      "on-click": "fcitx5-remote -t && pkill -SIGRTMIN+5 waybar",
+      "on-click": "fcitx5-remote -t && /home/ntsu/.config/waybar/scripts/sendsignal.sh top SIGRTMIN 5",
       "signal": 5
     }
 }
