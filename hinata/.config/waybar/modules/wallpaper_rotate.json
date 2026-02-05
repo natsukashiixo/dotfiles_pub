@@ -1,10 +1,10 @@
 {
   "custom/wallpaper_rotate": {
-    "exec": "if [ -f \"$XDG_RUNTIME_DIR/wphandler/wallpapertimer\" ] && [ \"$(date +%s)\" -ge \"$(cat \"$XDG_RUNTIME_DIR/wphandler/wallpapertimer\")\" ]; then /home/ntsu/.config/waybar/scripts/wallpaper_rotate.sh; fi; echo 󰸉",
+    "exec": "/home/ntsu/scripts/wallpaper_rotate.sh && echo 󰸉",
     "format": "{}",
     "interval": 30,
     "tooltip": true,
     "tooltip-format": "Randomize wallpaper",
-    "on-click": "/home/ntsu/.config/waybar/scripts/wallpaper_rotate.sh"
+    "on-click": "/home/ntsu/scripts/wallpaper_rotate.sh --force"
   }
 }

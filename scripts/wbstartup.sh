@@ -20,5 +20,3 @@ hyprctl dispatch exec "~/.config/waybar/scripts/waybar_auto_hide --side bottom"
 hyprctl dispatch exec "~/scripts/wblaunchwrap.sh bottom $targetdir/bottom_waybar.pid"
 sleep 0.1
 hyprctl dispatch exec "~/scripts/wblaunchwrap.sh top $targetdir/top_waybar.pid"
-
-echo $(( $(date +%s) + DELAY )) > "$targetdir/wallpapertimer"

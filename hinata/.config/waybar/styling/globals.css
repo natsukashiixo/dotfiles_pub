@@ -1,0 +1,50 @@
+@define-color _background #DEADBEEF;
+@define-color _text_base #DE4DBEEF;
+@define-color _warn #D34DBEEF;
+@define-color _critical #D3ADBEEF;
+@define-color _hover #DEADB33F;
+@define-color _active #D34DB33F;
+
+* {
+    font-family: "Jost*";
+    font-size: 13px;
+    min-height: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.9);
+    color: #cdd6f4;
+    border: 1px solid rgba(143, 212, 255, 0);
+    border-radius: 0px;
+    box-shadow: 0 0 6px rgba(143, 212, 255, 0.2);
+}
+
+/* default module appearance – can be overridden later */
+label.module {
+    background: @_background;
+    color: @_text_base;
+    padding: 0px 8px;
+    margin: 0px 4px;
+    border-radius: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Light up modules on hover*/
+label.module:hover {
+    color: @_hover;
+}
+
+/* Change colour on waybar button press */
+label.module:active {
+  color: @_active;
+}
+
+/* Non Specific keyframes*/
+@keyframes blink {
+    to {
+        background-color: #8fd4ff;
+        color: black;
+    }
+}
