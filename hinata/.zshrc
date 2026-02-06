@@ -167,14 +167,31 @@ compdef _conf_complete conf
 
 # open Hyprland config files quickly
 hyprconf() {
-  local target="$HOME/.config/hypr/hyprland_imports/${1:-hyprland.conf}"
-  [ -e "$target" ] && $EDITOR "$target" || echo "No such config: $target"
+  local base="$HOME/.config/hypr"
+  local imports_dir="$base/imports"
+
+  # If no argument → edit the main config
+  if [[ -z $1 ]]; then
+    $EDITOR "$base/hyprland.conf"
+    return
+  fi
+
+  # Otherwise look for the file inside the imports directory
+  local target="$imports_dir/$1"
+  if [[ -e $target ]]; then
+    $EDITOR "$target"
+  else
+    echo "No such config: $target"
+  fi
 }
-# smart tab completion for hyprconf
+
 _hyprconf_complete() {
-  _files -W "$HOME/.config/hypr/hyprland_imports"
+  # List regular files (no directories) from the imports folder
+  _files -W "$HOME/.config/hypr/imports" -/
+  _files -W "$HOME/.config/hypr/imports" -g '*conf' -/
 }
 compdef _hyprconf_complete hyprconf
+
 
 # activate venv
 function va() {

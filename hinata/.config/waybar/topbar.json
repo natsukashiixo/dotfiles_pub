@@ -120,11 +120,11 @@
     },
     "pulseaudio": {
       "format": "{icon} {volume}%",
-      "format-muted": "",
+      "format-muted": " ",
       "format-icons": {
         "headphone": "",
         "alsa_output.usb-SteelSeries_Arctis_Nova_7-00.analog-stereo": " ",
-        "default": [" ", " "]
+        "default": [""," ", " "]
       },
       "on-click": "~/.config/waybar/scripts/pavutoggle.py",
       "on-click-right": "~/.config/waybar/scripts/toggle_audio.sh",

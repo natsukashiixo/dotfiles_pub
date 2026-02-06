@@ -23,7 +23,7 @@ esac
 
 mkdir -p "$(dirname "$pidfile")"
 
-waybar -c "$config" -s "$style" &
+waybar -c "$config" &
 pid=$!
 
 echo "$pid" > "$pidfile"
