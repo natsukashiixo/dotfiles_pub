@@ -1,0 +1,68 @@
+/* fallback colors */
+:root {
+    --background: rgba(0, 0, 0, 0.8);
+    --border:     rgba(0, 0, 0, 1);
+    --text-base:  rgba(145, 145, 145, 1);
+    --warning:    rgba(211, 77, 190, 1);
+    --critical:   rgba(211, 173, 190, 1);
+    --hover:      rgba(255, 255, 255, 1);
+    --active:     rgba(211, 77, 179, 1);
+    --charging:   rgba(171, 171, 171, 1);
+}
+
+/* import theme overrides – they should also use the --var syntax */
+@import "/home/ntsu/.config/ntsu_themes/waybar.css";
+
+/* expose the variables for use in the rest of the stylesheet */
+:root {
+    --background: var(--background);
+    --border: var(--border);
+    --text-base: var(--text-base);
+    --warning: var(--warning);
+    --critical: var(--critical);
+    --hover: var(--hover);
+    --active: var(--active);
+    --charging: var(--charging);
+}
+
+* {
+    font-family: "Jost*";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: var(--background);
+    color: var(--text-base);
+    border-radius: 0px;
+    box-shadow: 0 0 6px rgba(143, 212, 255, 0.2);
+}
+
+/* default module appearance – can be overridden later */
+label.module {
+    background: var(--background);
+    color: var(--text-base);
+    padding: 0px 8px;
+    margin: 0px 4px;
+    border-radius: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Light up modules on hover */
+label.module:hover {
+    color: var(--hover);
+}
+
+/* Change colour on waybar button press */
+label.module:active {
+    color: var(--active);
+}
+
+/* Non‑specific keyframes */
+@keyframes blink {
+    to {
+        background-color: #8fd4ff;
+        color: black;
+    }
+}

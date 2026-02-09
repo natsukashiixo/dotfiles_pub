@@ -1,6 +1,6 @@
-@import "/home/ntsu/.config/waybar/styling/topbar.css";
-@import "/home/ntsu/.config/waybar/styling/bottombar.css";
-@import "/home/ntsu/.config/waybar/styling/globals.css";
+@import "/home/ntsu/.config/waybar/css/topbar.css";
+@import "/home/ntsu/.config/waybar/css/bottombar.css";
+@import "/home/ntsu/.config/waybar/css/globals.css";
 
 * {
  }
