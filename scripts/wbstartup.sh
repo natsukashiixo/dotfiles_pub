@@ -4,7 +4,6 @@ set -euo pipefail
 : "${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR not set}"
 
 targetdir="$XDG_RUNTIME_DIR/wbhandler"
-DELAY=1800
 mkdir -p "$targetdir"
 
 # clean the slate

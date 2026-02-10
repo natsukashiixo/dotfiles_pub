@@ -1,29 +1,26 @@
-/* fallback colors */
-:root {
-    --background: rgba(0, 0, 0, 0.8);
-    --border:     rgba(0, 0, 0, 1);
-    --text-base:  rgba(145, 145, 145, 1);
-    --warning:    rgba(211, 77, 190, 1);
-    --critical:   rgba(211, 173, 190, 1);
-    --hover:      rgba(255, 255, 255, 1);
-    --active:     rgba(211, 77, 179, 1);
-    --charging:   rgba(171, 171, 171, 1);
-}
+/* fallback colors in hex, does not support alpha in the last bit :( */
 
-/* import theme overrides – they should also use the --var syntax */
+@define-color _background #000000;
+@define-color _border #000000;
+@define-color _text_base #919191;
+@define-color _warn #D34DBE;
+@define-color _critical #D3ADBE;
+@define-color _hover #FFFFFF;
+@define-color _active #D34DB3;
+@define-color _charging #ABABAB;
+
+/* put theme colors in this file with the referenced names to overwrite defaults */
+/* basically just copy block above and if you write colors programatically make sure it follows above spec */
 @import "/home/ntsu/.config/ntsu_themes/waybar.css";
 
-/* expose the variables for use in the rest of the stylesheet */
-:root {
-    --background: var(--background);
-    --border: var(--border);
-    --text-base: var(--text-base);
-    --warning: var(--warning);
-    --critical: var(--critical);
-    --hover: var(--hover);
-    --active: var(--active);
-    --charging: var(--charging);
-}
+@define-color background @_background;
+@define-color border @_border;
+@define-color text_base @_text_base;
+@define-color warning @_warn;
+@define-color critical @_critical;
+@define-color hover @_hover;
+@define-color active @_active;
+@define-color charging @_charging;
 
 * {
     font-family: "Jost*";
@@ -32,16 +29,16 @@
 }
 
 window#waybar {
-    background: var(--background);
-    color: var(--text-base);
+    background: @background;
+    color: @text_base;
     border-radius: 0px;
     box-shadow: 0 0 6px rgba(143, 212, 255, 0.2);
 }
 
 /* default module appearance – can be overridden later */
 label.module {
-    background: var(--background);
-    color: var(--text-base);
+    background: @background;
+    color: @text_base;
     padding: 0px 8px;
     margin: 0px 4px;
     border-radius: 0px;
@@ -49,17 +46,17 @@ label.module {
     margin-bottom: 4px;
 }
 
-/* Light up modules on hover */
+/* Light up modules on hover*/
 label.module:hover {
-    color: var(--hover);
+    color: @hover;
 }
 
 /* Change colour on waybar button press */
 label.module:active {
-    color: var(--active);
+  color: @active;
 }
 
-/* Non‑specific keyframes */
+/* Non Specific keyframes*/
 @keyframes blink {
     to {
         background-color: #8fd4ff;
