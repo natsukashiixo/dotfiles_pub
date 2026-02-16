@@ -1,0 +1,10 @@
+#!/bin/bash
+sink="@DEFAULT_SINK@"
+volume="$1"
+
+if [[ -z "$volume" ]]; then
+  echo "Usage: $0 <volume_level>"
+  exit 1
+fi
+
+pactl set-sink-volume $sink $volume%

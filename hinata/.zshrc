@@ -209,6 +209,9 @@ shutup() {
   "$@" >/dev/null 2>&1; 
 }
 
+shuterr() {
+  "$@" 2>/dev/null;
+}
 
 # path env vars
 export ZSHCONF="$HOME/.zshrc"
