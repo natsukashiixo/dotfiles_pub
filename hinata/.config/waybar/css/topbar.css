@@ -123,3 +123,9 @@
     color: @critical;
     background-color: #2e3440;
 }
+#custom-monocle-windows.activeicon {
+    color: #ffffff;
+}
+#custom-monocle-windows.text {
+    color: #ff0fff;
+}

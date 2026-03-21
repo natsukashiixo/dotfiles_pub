@@ -157,14 +157,14 @@
   "margin-bottom": 0,
   "output": "HDMI-A-1",
   "ipc": false,
-  "modules-center": ["hyprland/workspaces"],
+  "modules-left": ["custom/monocle-windows"],
   "reload_style_on_change": true,
-  "hyprland/workspaces": {
-    "workspace-taskbar": {
-      "enable": true,
-      "update-active-window": true,
-      "format": "{title:.20}"
+  "custom/monocle-windows": {
+    "exec": "/home/ntsu/.config/waybar/scripts/monoclewindows.py",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "hyprctl dispatch layoutmsg cyclenext",
+    "format": "<b>{alt}</b>   {text}"
     }
   }
-}
 ]
