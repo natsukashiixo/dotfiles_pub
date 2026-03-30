@@ -36,6 +36,12 @@
     "network",
     "bluetooth",
   ],
-  "reload_style_on_change": true
+  "reload_style_on_change": true,
+  "bluetooth": {
+      "format": "",
+      "format-disabled": "󰂲",
+      "format-connected": "󰂱 {num_connections}",
+      "on-click": "bzmenu -l custom --launcher-command 'rofi -dmenu -theme ~/.config/rofi/global/bt.rasi' > /dev/null 2>&1",
+    }
     }
 ]
