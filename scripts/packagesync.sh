@@ -31,6 +31,14 @@ safe_run yay -Qqm > "$HOST/aurlist.txt"
 safe_run flatpak list --app --columns=application > "$HOST/flatpaklist.txt"
 safe_run uv tool list | awk '!/- /' > "$HOST/uvlist.txt"
 
+# === Remove AUR packages from paclist ===
+if [[ -s "$HOST/aurlist.txt" ]] && [[ -s "$HOST/paclist.txt" ]]; then
+  grep -v -f "$HOST/aurlist.txt" "$HOST/paclist.txt" > "$HOST/paclist.txt.tmp"
+  cat "$HOST/paclist.txt.tmp" > "$HOST/paclist.txt"
+  rm -f "$HOST/paclist.txt.tmp"
+  log "Removed AUR packages from paclist.txt"
+fi
+
 for file in "$HOST"/*.txt; do
   [[ -s "$file" ]] || continue
   if head -n 1 "$file" | grep -q '^\['; then
