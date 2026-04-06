@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from os.path import realpath
 import os
 from pathlib import Path
@@ -19,8 +21,9 @@ def browser_in_path(browser: str) -> bool:
     except subprocess.CalledProcessError:
         return False
 
+#app icon thing is ugly temporary permanent hack until i write out the proper way to do str || None
 class DesktopFileData:
-    def __init__(self, app_name: str, app_icon: str, app_url: str, browser: str) -> None:
+    def __init__(self, app_name: str, app_url: str, browser: str, app_icon=None) -> None:
         #variables not directly tied to desktop spec
         self.browser = browser
         self.appicon = app_icon
@@ -106,3 +109,5 @@ def main():
         print(f"Error writing desktop file: {e}", file=sys.stderr)
         sys.exit(1)
 
+if __name__ == "__main__":
+    main()
