@@ -136,7 +136,7 @@ alias listaur='pacman -Qqm'
 alias listpac='comm -23 <(pacman -Qqe | sort) <(pacman -Qqm | sort)'
 alias listupdates='command -v checkupdates >/dev/null && checkupdates || echo "install pacman-contrib for checkupdates first pls"'
 alias aurupdates='yay -Qua'
-alias ballsyupdate='sudo pacman -Syy && sudo pacman -Syu --noconfirm && yay -Syu --noconfirm'
+alias ballsyupdate='sudo pacman -Syy && sudo pacman -Syu --noconfirm && yay -Syu --noconfirm && pacman -Qdtq | sudo pacman -Rns -'
 
 # wallpaper stuff
 alias idolmode='~/scripts/wallpapermode.py idol'
