@@ -29,15 +29,7 @@ safe_run apk list -I --manual > "$HOST/apklist.txt"
 safe_run pacman -Qqe > "$HOST/paclist.txt"
 safe_run yay -Qqm > "$HOST/aurlist.txt"
 safe_run flatpak list --app --columns=application > "$HOST/flatpaklist.txt"
-safe_run uv tool list | awk '!/- /' > "$HOST/uvlist.txt"
-
-# === Remove AUR packages from paclist ===
-if [[ -s "$HOST/aurlist.txt" ]] && [[ -s "$HOST/paclist.txt" ]]; then
-  grep -v -f "$HOST/aurlist.txt" "$HOST/paclist.txt" > "$HOST/paclist.txt.tmp"
-  cat "$HOST/paclist.txt.tmp" > "$HOST/paclist.txt"
-  rm -f "$HOST/paclist.txt.tmp"
-  log "Removed AUR packages from paclist.txt"
-fi
+safe_run uv tool list | awk '!/- / {print $1}' > "$HOST/uvlist.txt"
 
 for file in "$HOST"/*.txt; do
   [[ -s "$file" ]] || continue
@@ -47,6 +39,14 @@ for file in "$HOST"/*.txt; do
     log "Cleaned header from $(basename "$file")"
   fi
 done
+
+# === Remove AUR packages from paclist ===
+if [[ -s "$HOST/aurlist.txt" ]] && [[ -s "$HOST/paclist.txt" ]]; then
+  grep -v -f "$HOST/aurlist.txt" "$HOST/paclist.txt" > "$HOST/paclist.txt.tmp"
+  cat "$HOST/paclist.txt.tmp" > "$HOST/paclist.txt"
+  rm -f "$HOST/paclist.txt.tmp"
+  log "Removed AUR packages from paclist.txt"
+fi
 
 # === Commit + push if changes ===
 if ! git diff --quiet || ! git diff --cached --quiet; then
