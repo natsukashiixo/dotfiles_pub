@@ -37,7 +37,11 @@ class DesktopFileData:
         self.terminal_exec = "false"
         self.appicon_path = self.get_icon()
         self.weak_sanitize_appname = self.sanitize_filename(self.app_name)
-        self.exec_str = f'setsid {browser} --user-data-dir="{os.getenv("XDG_CACHE_HOME") if os.getenv("XDG_CACHE_HOME") else Path(HOMEDIR / ".cache")}/{self.weak_sanitize_appname}" --no-default-browser-check --app="{self.app_url}" &'
+        # really brittle, if url contains a path to a tv endpoint then embed different User-Agent to hopefully get proper functionality
+        if "/tv" in self.app_url:
+            self.exec_str = f'setsid {browser} --user-data-dir="{os.getenv("XDG_CACHE_HOME") if os.getenv("XDG_CACHE_HOME") else Path(HOMEDIR / ".cache")}/{self.weak_sanitize_appname}" --no-default-browser-check --app="{self.app_url}" --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0" &'
+        else:
+            self.exec_str = f'setsid {browser} --user-data-dir="{os.getenv("XDG_CACHE_HOME") if os.getenv("XDG_CACHE_HOME") else Path(HOMEDIR / ".cache")}/{self.weak_sanitize_appname}" --no-default-browser-check --app="{self.app_url}"'
     
     def sanitize_filename(self, name: str):
         return "".join(c for c in name.casefold() if c.isalnum() or c in '-_')
