@@ -3,7 +3,7 @@
 set -e
 
 if [ "$#" -lt 3 ]; then
-  echo -e "\e[32mLet's create a new web app you can start with the app launcher.\n\e[0m"
+  echo -e "\e[32mLet's create a new web app you can start with the app launcher while using existing browser profile+extensions.\n\e[0m"
   APP_NAME=$(gum input --prompt "Name> " --placeholder "My favorite web app")
   APP_URL=$(gum input --prompt "URL> " --placeholder "https://example.com")
 
@@ -81,12 +81,13 @@ DESKTOP_FILE="$HOME/.local/share/applications/$APP_NAME.desktop"
 
 APP_NAME_SANITIZED="$(echo "$APP_NAME" | sed 's/ //g')"
 
+
 cat >"$DESKTOP_FILE" <<EOF
 [Desktop Entry]
 Version=1.0
 Name=$APP_NAME
 Comment=$APP_NAME
-Exec=setsid helium-browser --user-data-dir="$HOME/.config/$APP_NAME_SANITIZED" --no-default-browser-check --app="$APP_URL" &
+Exec=setsid helium-browser --no-default-browser-check --app="$APP_URL" &
 Terminal=false
 Type=Application
 Icon=$ICON_PATH
@@ -99,9 +100,6 @@ if [[ -n $MIME_TYPES ]]; then
 fi
 
 chmod +x "$DESKTOP_FILE"
-
-# not sure about this one chief
-chmod 700 "$HOME/.config/$APP_NAME_SANITIZED"
 
 if [[ $INTERACTIVE_MODE == true ]]; then
   echo -e "You can now find $APP_NAME using the app launcher (SUPER + SPACE)\n"
