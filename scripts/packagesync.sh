@@ -17,7 +17,7 @@ mkdir -p "$PKGDIR/$HOST"
 cd "$PKGDIR"
 
 if ! [[ -d ".git/" ]]; then
-  git clone git@github.com:natsukashiixo/packages.git
+  git clone git@ntsu-deploy:natsukashiixo/packages.git
 fi
 git pull
 
@@ -65,6 +65,7 @@ fi
 if ! git diff --quiet || ! git diff --cached --quiet; then
   git add -A
   git commit -m "Auto-sync: $(date '+%Y-%m-%d %H:%M:%S')"
+  git pull --rebase
   git push
   log "Committed and pushed updates."
 else

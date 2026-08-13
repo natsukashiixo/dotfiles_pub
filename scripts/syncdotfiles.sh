@@ -23,7 +23,7 @@ start_log
 cd "$DOTSREPO"
 
 if ! [[ -d ".git/" ]]; then
-  git clone git@github.com:natsukashiixo/dotfiles_pub.git
+  git clone git@ntsu-deploy:natsukashiixo/dotfiles_pub.git
 fi
 git pull
 
