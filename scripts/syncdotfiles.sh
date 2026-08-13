@@ -12,9 +12,8 @@ else
   CODEDIR="$XDG_PROJECTS_DIR"
 fi
 
-PKGDIR="$CODEDIR/packages"
-mkdir -p "$PKGDIR/$HOST"
 export DOTSREPO="$CODEDIR/dotfiles_pub/"
+mkdir -p "$DOTSREPO"
 
 #=== Set up logging ===
 source ~/scripts/lib/logging.sh
@@ -23,7 +22,7 @@ start_log
 cd "$DOTSREPO"
 
 if ! [[ -d ".git/" ]]; then
-  git clone git@ntsu-deploy:natsukashiixo/dotfiles_pub.git
+  git clone git@ntsu-deploy:natsukashiixo/dotfiles_pub.git .
 fi
 git pull
 
@@ -32,7 +31,9 @@ mkdir -p scripts
 rsync -a --update --no-links "$HOME/scripts/" "scripts/"
 rsync -a --delete --update --no-links "$HOME/.zshrc" "$HOST/"
 rsync -a --delete --update --no-links --exclude-from='.gitignore' "$HOME/.config/" "$HOST/.config/"
-rsync -a --delete --update --no-links --exclude-from='.gitignore' "/etc/greetd/" "$HOST/greetd/"
+if [ -d "/etc/greetd" ]; then
+  rsync -a --delete --update --no-links --exclude-from='.gitignore' "/etc/greetd/" "$HOST/greetd/"
+fi
 
 if ! git diff --quiet || ! git diff --cached --quiet; then
   git add -A
