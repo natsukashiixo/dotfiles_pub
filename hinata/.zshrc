@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# move zshdump out of home folder
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
 #Add Rust Path
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -147,6 +150,12 @@ alias wprotate='/home/ntsu/scripts/wallpaper_random.py horiz && /home/ntsu/scrip
 
 #function aliases
 function fuck() { sudo $(fc -ln -1); }
+
+# attempt to always get rsync to show progress
+rsync() {
+    command rsync --info=progress2 "$@"
+}
+
 
 # jump to a subdirectory in ~/.config
 conf() {

@@ -111,17 +111,17 @@
     color: inherit;
 }
 #custom-kernel {
-    background-color: #2e3440;
+    background-color: #000000;
     padding: 0 10px;
     border-radius: 0px;
 }
 #custom-kernel-update.update {
     color: @warning;
-    background-color: #2e3440;
+    background-color: #000000;
 }
 #custom-kernel-update.reboot {
     color: @critical;
-    background-color: #2e3440;
+    background-color: #000000;
 }
 #custom-monocle-windows.activeicon {
     color: #ffffff;

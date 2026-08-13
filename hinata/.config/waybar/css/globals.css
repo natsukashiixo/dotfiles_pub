@@ -1,13 +1,13 @@
 /* fallback colors in hex, does not support alpha in the last bit :( */
 
 @define-color _background #000000;
-@define-color _border #000000;
+@define-color _border #2a2a2a;
 @define-color _text_base #919191;
-@define-color _warn #D34DBE;
-@define-color _critical #D3ADBE;
-@define-color _hover #FFFFFF;
-@define-color _active #D34DB3;
-@define-color _charging #ABABAB;
+@define-color _warn #ff6b9d;
+@define-color _critical #ff3366;
+@define-color _hover #ffffff;
+@define-color _active #ff1493;
+@define-color _charging #4CAF50;
 
 /* put theme colors in this file with the referenced names to overwrite defaults */
 /* basically just copy block above and if you write colors programatically make sure it follows above spec */

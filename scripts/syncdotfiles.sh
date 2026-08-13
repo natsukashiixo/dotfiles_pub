@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export HOST="${HOST:-$(cat /etc/hostname)}"
-export CODEDIR="/mnt/raid/mycode"
+# === Environment setup ===
+HOST="${HOST:-$(cat /etc/hostname)}"
+XDG_PROJECTS_DIR="${XDG_PROJECTS_DIR:-$HOME/Projects}"
+
+# check for local path
+if [[ -d "/mnt/raid/mycode" ]]; then
+  CODEDIR="/mnt/raid/mycode"
+else
+  CODEDIR="$XDG_PROJECTS_DIR"
+fi
+
+PKGDIR="$CODEDIR/packages"
+mkdir -p "$PKGDIR/$HOST"
 export DOTSREPO="$CODEDIR/dotfiles_pub/"
 
 #=== Set up logging ===
@@ -10,6 +21,11 @@ source ~/scripts/lib/logging.sh
 start_log
 
 cd "$DOTSREPO"
+
+if ! [[ -d ".git/" ]]; then
+  git clone git@github.com:natsukashiixo/dotfiles_pub.git
+fi
+git pull
 
 mkdir -p scripts
 

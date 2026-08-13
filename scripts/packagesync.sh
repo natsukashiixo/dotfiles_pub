@@ -2,11 +2,24 @@
 set -euo pipefail
 
 # === Environment setup ===
-export HOST="${HOST:-$(cat /etc/hostname)}"
-export CODEDIR="${CODEDIR:-/mnt/raid/mycode}"
-export PKGDIR="$CODEDIR/packages"
+HOST="${HOST:-$(cat /etc/hostname)}"
+XDG_PROJECTS_DIR="${XDG_PROJECTS_DIR:-$HOME/Projects}"
+
+# check for local path otherwise use xdg spec
+if [[ -d "/mnt/raid/mycode" ]]; then
+  CODEDIR="/mnt/raid/mycode"
+else
+  CODEDIR="$XDG_PROJECTS_DIR"
+fi
+
+PKGDIR="$CODEDIR/packages"
 mkdir -p "$PKGDIR/$HOST"
 cd "$PKGDIR"
+
+if ! [[ -d ".git/" ]]; then
+  git clone git@github.com:natsukashiixo/packages.git
+fi
+git pull
 
 # === Logging ===
 source ~/scripts/lib/logging.sh
