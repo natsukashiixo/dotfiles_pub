@@ -13,13 +13,15 @@ else
 fi
 
 PKGDIR="$CODEDIR/packages"
-mkdir -p "$PKGDIR/$HOST"
+mkdir -p "$PKGDIR"
 cd "$PKGDIR"
 
 if ! [[ -d ".git/" ]]; then
-  git clone git@ntsu-deploy:natsukashiixo/packages.git
+  git clone git@ntsu-deploy:natsukashiixo/packages.git .
 fi
 git pull
+
+mkdir -p "$PKGDIR/$HOST"
 
 # === Logging ===
 source ~/scripts/lib/logging.sh
