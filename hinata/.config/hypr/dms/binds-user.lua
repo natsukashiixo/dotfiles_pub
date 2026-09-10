@@ -1,0 +1,13 @@
+-- DMS user keybind overrides (edit via Control Center or dms; do not remove this header)
+
+hl.unbind("SUPER + space")
+hl.bind("SUPER + space", hl.dsp.exec_cmd("dms ipc call spotlight toggle"), { description = "Default Launcher: Toggle" })
+hl.unbind("SUPER + J")
+hl.bind("SUPER + J", hl.dsp.exec_cmd("sh -c \"fcitx5-remote -t\""))
+hl.unbind("SUPER + SHIFT + S")
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("sh -c \"~/.config/scripts/screenshot_custom\""))
+hl.unbind("SUPER + F")
+hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }), { description = "Float/unfloat window" })
+hl.unbind("SUPER + SHIFT + T")
+hl.unbind("SUPER + W")
+hl.bind("SUPER + W", hl.dsp.exec_cmd("helium-browser"))
