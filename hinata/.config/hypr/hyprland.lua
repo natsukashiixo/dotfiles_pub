@@ -30,7 +30,7 @@ hl.config({
 	decoration = {
 		rounding = 12,
 		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+		inactive_opacity = 0.9,
 		shadow = {
 			enabled = true,
 			range = 30,
@@ -89,3 +89,7 @@ require("dms.cursor")
 require("dms.binds")
 require("dms.binds-user")
 require("dms.windowrules")
+
+-- manual addition
+require("imports.windowrules")
+require("imports.decorations")

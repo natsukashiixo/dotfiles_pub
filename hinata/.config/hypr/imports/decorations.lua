@@ -5,35 +5,18 @@
 ---@module 'hl'
 
 -- █▀▄ █▀▀ █▀▀ █▀█ █▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
-
 -- █▄▀ ██▄ █▄▄ █▄█ █▀▄ █▀█ ░█░ █ █▄█ █░▀█
 
 hl.config({
     decoration = {
-        -- █▀█ █▀█ █░█ █▄░█ █▀▄   █▀▀ █▀█ █▀█ █▄░█ █▀▀ █▀█
-        -- █▀▄ █▄█ █▄█ █░▀█ █▄▀   █▄▄ █▄█ █▀▄ █░▀█ ██▄ █▀▄
-        rounding = 6,
-        rounding_power = 2.0,
-        -- █▀█ █▀█ ▄▀█ █▀▀ █ ▀█▀ █▄█
-        -- █▄█ █▀▀ █▀█ █▄▄ █ ░█░ ░█░
-        active_opacity = 1.0,
-        inactive_opacity = 0.8,
         -- █▄▄ █░░ █░█ █▀█
         -- █▄█ █▄▄ █▄█ █▀▄
         blur = {
             enabled = true,
-            size = 3,
-            passes = 3,
+            size = 2,
+            passes = 2,
             new_optimizations = true,
-        },
-        -- █▀ █░█ ▄▀█ █▀▄ █▀█ █░█░█
-        -- ▄█ █▀█ █▀█ █▄▀ █▄█ ▀▄▀▄▀
-        shadow = {
-            enabled = true,
-            range = 10,
-            render_power = 2,
-            --ignore_window = true
-            color = "0x66000000",
+            variant = glass
         },
     },
 })
