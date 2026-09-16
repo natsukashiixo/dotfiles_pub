@@ -15,3 +15,6 @@ hl.window_rule({ match = { class = "^com.github.wwmm.easyeffects$" }, float = tr
 
 -- DMS-RULE: id=wr_1789021864993328109, name=privateinternetaccess
 hl.window_rule({ match = { class = "^privateinternetaccess$" }, float = true, size = { 400, 600 }, monitor = "DP-1", workspace = "3" })
+
+-- DMS-RULE: id=dms-floating-windows, name=DMS Floating Windows
+hl.window_rule({ match = { class = "^com.danklinux.dms$" }, float = true })

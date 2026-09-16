@@ -93,3 +93,4 @@ require("dms.windowrules")
 -- manual addition
 require("imports.windowrules")
 require("imports.decorations")
+-- require("imports.vars")
