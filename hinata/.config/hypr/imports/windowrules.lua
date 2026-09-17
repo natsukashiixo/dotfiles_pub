@@ -165,22 +165,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "MPV_Idle_Inhibit_Focus",
-    match = {
-        class = "mpv",
-    },
-    idle_inhibit = "focus",
-})
-
-hl.window_rule({
-    name  = "Firefox_Idle_Inhibit_Fullscreen",
-    match = {
-        class = "firefox",
-    },
-    idle_inhibit = "fullscreen",
-})
-
-hl.window_rule({
     name  = "Media-Viewer_Float",
     match = {
         title = "^(Media viewer)$",
