@@ -1,0 +1,7 @@
+-- was imports/cursor.conf
+hl.config({
+    cursor = {
+        no_hardware_cursors = 1,
+        inactive_timeout    = 60,
+    },
+})

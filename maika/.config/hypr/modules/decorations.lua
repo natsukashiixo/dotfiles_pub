@@ -1,0 +1,25 @@
+-- was imports/decorations.conf
+hl.config({
+    decoration = {
+        rounding       = 6,
+        rounding_power = 2.0,
+
+        active_opacity   = 1.0,
+        inactive_opacity = 1.0,
+
+        blur = {
+            enabled           = false,
+            size              = 3,
+            passes            = 3,
+            new_optimizations = true,
+        },
+
+        shadow = {
+            enabled      = true,
+            range        = 10,
+            render_power = 2,
+            -- ignore_window no longer exists in 0.56 (it was already commented out live)
+            color        = "rgba(00000066)", -- was 0x66000000
+        },
+    },
+})

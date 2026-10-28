@@ -30,7 +30,20 @@ mkdir -p scripts
 
 rsync -a --update --no-links "$HOME/scripts/" "scripts/"
 rsync -a --delete --update --no-links "$HOME/.zshrc" "$HOST/"
-rsync -a --delete --update --no-links --exclude-from='.gitignore' "$HOME/.config/" "$HOST/.config/"
+# .gitignore is an allowlist (`**/.config/*`, then `!**/.config/<name>` per synced entry). rsync matches
+# patterns relative to ~/.config/, so --exclude-from can't use it; build the include rules from the `!` lines.
+config_filters=()
+while IFS= read -r name; do
+  config_filters+=(--include="/$name" --include="/$name/***")
+done < <(sed -nE 's#^!\*\*/?\.config/([^/]+)/?$#\1#p' .gitignore)
+
+if (( ${#config_filters[@]} == 0 )); then
+  # with no includes, --delete-excluded would empty $HOST/.config and the commit would delete every tracked config
+  log "No !**/.config/<name> lines in .gitignore; skipping the .config sync."
+else
+  # --delete-excluded also clears anything outside the allowlist that older runs copied in
+  rsync -a --delete --delete-excluded --update --no-links "${config_filters[@]}" --exclude='*' "$HOME/.config/" "$HOST/.config/"
+fi
 if [ -d "/etc/greetd" ]; then
   rsync -a --delete --update --no-links --exclude-from='.gitignore' "/etc/greetd/" "$HOST/greetd/"
 fi
