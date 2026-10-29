@@ -1,0 +1,6 @@
+[sie][Gate#0]
+reduction=0
+
+[soe][Gate#0]
+bypass=true
+reduction=0
