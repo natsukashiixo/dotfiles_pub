@@ -1,4 +1,4 @@
--- DMS Window Rules — managed by DankMaterialShell
+-- DMS Window Rules — managed by Dux Shell
 -- Do not edit manually; changes may be overwritten
 
 -- DMS-RULE: id=wr_1788984200824774410, name=Steam Notifs
@@ -17,4 +17,7 @@ hl.window_rule({ match = { class = "^com.github.wwmm.easyeffects$" }, float = tr
 hl.window_rule({ match = { class = "^privateinternetaccess$" }, float = true, size = { 400, 600 }, monitor = "DP-1", workspace = "3" })
 
 -- DMS-RULE: id=dms-floating-windows, name=DMS Floating Windows
-hl.window_rule({ match = { class = "^com.danklinux.dms$" }, float = true })
+hl.window_rule({ match = { class = "^(dev\\.duxlabs\\.shell|com\\.danklinux\\.dms)$" }, float = true })
+
+-- DMS-RULE: id=dms-window-opaque, name=DMS Window Opaque
+hl.window_rule({ match = { class = "^(dev\\.duxlabs\\.shell|com\\.danklinux\\.dms)$" }, opaque = true })

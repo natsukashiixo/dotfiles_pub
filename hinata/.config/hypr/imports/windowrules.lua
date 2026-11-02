@@ -263,3 +263,30 @@ hl.window_rule({
     center = true,
     no_blur = true,
 })
+
+-- Startup placement (was autostart.lua exec rules). DMS rules in dms/windowrules.lua
+-- already set float/size/workspace 3 for these; this only adds the positions.
+hl.window_rule({
+    name  = "EasyEffects_Position",
+    match = { class = "^com.github.wwmm.easyeffects$" },
+    move  = { "(monitor_w*0.84)", "(monitor_h*0.8)" },
+})
+
+hl.window_rule({
+    name  = "PIA_Position",
+    match = { class = "^privateinternetaccess$" },
+    move  = { "(monitor_w*0.84)", "(monitor_h*0.02)" },
+})
+
+hl.window_rule({
+    name  = "Signal_Position",
+    match = { class = "^signal$" },
+    move  = { "(monitor_w*0)", "(monitor_h*0.8)" },
+})
+
+hl.window_rule({
+    name      = "Vesktop_Workspace_2",
+    match     = { class = "^vesktop$" },
+    monitor   = "DP-1",
+    workspace = "2 silent",
+})

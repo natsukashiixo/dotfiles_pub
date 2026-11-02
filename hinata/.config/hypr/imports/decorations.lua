@@ -16,7 +16,7 @@ hl.config({
             size = 2,
             passes = 2,
             new_optimizations = true,
-            variant = glass
+            -- variant: see imports/blur.lua
         },
     },
 })

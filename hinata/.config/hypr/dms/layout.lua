@@ -9,6 +9,14 @@ hl.config({
 	},
 	decoration = {
 		rounding = 5,
+		blur = {
+			passes = 2,
+		},
+		wobble = {
+			enabled = true,
+			intensity = 0.23,
+			stiffness = 313,
+		},
 	},
 })
 
