@@ -290,3 +290,11 @@ hl.window_rule({
     monitor   = "DP-1",
     workspace = "2 silent",
 })
+
+hl.window_rule({
+    name   = "XTerm_Float",
+    match  = { class = "^XTerm$" },
+    float  = true,
+    size   = { 600, 480 },
+    center = true,
+})
