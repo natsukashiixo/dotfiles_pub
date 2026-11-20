@@ -124,7 +124,7 @@ alias ipaddr="ip -color -br a"
 alias ff="fastfetch"
 alias py="$(command -v python3 || command -v python)"
 alias unfuckscreens="ddcutil --display 1 setvcp 10 100 && ddcutil --display 2 setvcp 10 100"
-alias wbrestart='~/scripts/wbfullrestart.sh'
+alias hyprlockrestart="hyprctl --instance 0 eval 'hl.clear_crashed_lockscreen()'"
 
 # code paths
 export RAIDROOT="/mnt/raid"
