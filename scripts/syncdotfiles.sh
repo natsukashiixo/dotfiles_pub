@@ -24,7 +24,7 @@ cd "$DOTSREPO"
 if ! [[ -d ".git/" ]]; then
   git clone git@ntsu-deploy:natsukashiixo/dotfiles_pub.git .
 fi
-git pull
+git pull --rebase
 
 mkdir -p scripts
 
