@@ -37,14 +37,9 @@ hl.window_rule({
 float_class("File-Roller_Float", "file-roller")
 float_title("Picture-in-Picture_Float", "^(Picture-in-Picture)$")
 
-hl.window_rule({
-    name  = "Steam_Chat_Float_Centered",
-    -- D5 (owner: fix it). The old rule also required tag STEAMTAG, which nothing sets, so it never matched.
-    -- Float + centre every Steam window except the main client and Big Picture (RE2 full match).
-    match = { class = "steam", title = "negative:^(Steam|Steam Big Picture Mode)$" },
-    float = true,
-    center = true,
-})
+-- 2026-11-21: removed Steam_Chat_Float_Centered (floated every Steam window not titled exactly "Steam").
+-- Steam's startup windows map with an empty/other title, so the main client floated above the
+-- monocle stack without taking focus. Real transient dialogs still auto-float via X11 hints.
 
 hl.window_rule({
     name  = "Steam_Friends-List_Float",
@@ -52,4 +47,12 @@ hl.window_rule({
     float = true,
     size  = { 400, 600 },
     move  = { "monitor_w*0.84", "monitor_h*0.02" },
+})
+
+-- HTPC: every tiled window opens fullscreen (no gaps/waybar). Dialogs, popups and the floating
+-- rules above are excluded because `float = false` only matches tiled windows.
+hl.window_rule({
+    name       = "HTPC_Fullscreen_Tiled",
+    match      = { float = false },
+    fullscreen = true,
 })

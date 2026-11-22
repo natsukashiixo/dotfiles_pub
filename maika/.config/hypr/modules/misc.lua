@@ -4,6 +4,10 @@ hl.config({
         disable_hyprland_logo    = true,
         disable_splash_rendering = true,
         mouse_move_enables_dpms  = true,
+        -- HTPC: windows that request activation (Steam, launchers handing off to games) take focus.
+        focus_on_activate        = true,
+        -- new window while another is fullscreen: it takes over fullscreen instead of hiding behind it.
+        on_focus_under_fullscreen = 1,
     },
     -- `misc.vfr` (commented out in the live config) moved to `debug.vfr` in 0.55+:
     -- debug = { vfr = true },
