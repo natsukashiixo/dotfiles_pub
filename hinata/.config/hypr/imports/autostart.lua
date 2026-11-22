@@ -29,7 +29,6 @@
 
 -- fake cloud mount, disabling because it didnt work as expected
 
--- exec-once = /home/ntsu/scripts/heynote_fuse.sh
 
 -- █▀▀ ▀▄▀ █▀▀ █▀▀
 
@@ -54,7 +53,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("fcitx5")
     hl.exec_cmd("dunst")
-    hl.exec_cmd("mega-cmd-server")
+    -- mega-cmd-server now runs via systemd user unit megacmd.service
     hl.exec_cmd("hypridle")
     hl.exec_cmd("xrandr --output DP-1 --primary")
     hl.exec_cmd("hyprsunset")
