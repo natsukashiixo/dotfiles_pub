@@ -49,6 +49,16 @@ hl.window_rule({
     move  = { "monitor_w*0.84", "monitor_h*0.02" },
 })
 
+-- 2026-11-23: Wine/Proton games (class "something.exe", Steam's "steam_app_<id>") sometimes float
+-- themselves (kinkoi.exe did), which drops them out of the monocle cycle and the fullscreen rule
+-- below. Tile them. If a game breaks when tiled, add a narrower exception above this rule;
+-- `refocus-game` (~/.local/bin) gets a floating one back.
+hl.window_rule({
+    name  = "Games_Tile",
+    match = { class = "^(.*\\.exe|steam_app_[0-9]+)$" },
+    tile  = true,
+})
+
 -- HTPC: every tiled window opens fullscreen (no gaps/waybar). Dialogs, popups and the floating
 -- rules above are excluded because `float = false` only matches tiled windows.
 hl.window_rule({
