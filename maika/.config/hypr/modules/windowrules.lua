@@ -66,3 +66,11 @@ hl.window_rule({
     match      = { float = false },
     fullscreen = true,
 })
+
+-- A tiled window that lost fullscreen (the hub after mpv closes) fills the screen too: gaps are 0
+-- (general.lua), and no rounded corners. Floating windows keep theirs.
+hl.window_rule({
+    name     = "HTPC_Square_Tiled",
+    match    = { float = false },
+    rounding = 0,
+})

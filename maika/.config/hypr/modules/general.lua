@@ -1,8 +1,8 @@
 -- was imports/general.conf
 hl.config({
     general = {
-        gaps_in     = 4,
-        gaps_out    = 8,
+        gaps_in     = 0, -- no margins: a tiled window that lost fullscreen still fills the screen
+        gaps_out    = 0,
         border_size = 0,
         col = {
             active_border   = "rgba(ffffffff)", -- was 0xffFFFFFF
